@@ -1,10 +1,8 @@
 .wrapper {
   display: grid;
-  width: 100%;
-  height: 97vh;
   margin: 0;
-  grid-template-rows: 120px auto 30px;
-  grid-template-areas: "header" "main" "footer ";
+  grid-template-rows: 160px auto 30px;
+  grid-template-areas: "header" "main" "footer";
 }
 
 #LogIn {
@@ -58,6 +56,28 @@ header nav ul li img {
 main {
   grid-area: main;
   background-color: rgb(255, 255, 255);
+  background-color: azure;
+}
+main .grid-container {
+  height: 800px;
+  display: grid;
+  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
+}
+main .Sidebar1 {
+  grid-area: Sidebar1;
+  background-color: beige;
+}
+main .Products {
+  grid-area: Products;
+  background-color: brown;
+}
+main .Options {
+  grid-area: Options;
+  background-color: chocolate;
+}
+main .Sidebar2 {
+  grid-area: Sidebar2;
+  background-color: springgreen;
 }
 
 footer {
