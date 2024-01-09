@@ -15,7 +15,8 @@
 #index main .Products {
   grid-area: Products;
   background-color: brown;
-  display: inline;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 #index main .Options {
   grid-area: Options;
