@@ -1,3 +1,31 @@
+#index main {
+  grid-area: main;
+  background-color: rgb(255, 255, 255);
+  background-color: azure;
+}
+#index main .grid-container {
+  height: 800px;
+  display: grid;
+  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
+}
+#index main .Sidebar1 {
+  grid-area: Sidebar1;
+  background-color: beige;
+}
+#index main .Products {
+  grid-area: Products;
+  background-color: brown;
+  display: inline;
+}
+#index main .Options {
+  grid-area: Options;
+  background-color: chocolate;
+}
+#index main .Sidebar2 {
+  grid-area: Sidebar2;
+  background-color: springgreen;
+}
+
 .wrapper {
   display: grid;
   margin: 0;
@@ -53,34 +81,29 @@ header nav ul li img {
   grid-column: 5;
 }
 
-main {
-  grid-area: main;
-  background-color: rgb(255, 255, 255);
-  background-color: azure;
-}
-main .grid-container {
-  height: 800px;
-  display: grid;
-  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
-}
-main .Sidebar1 {
-  grid-area: Sidebar1;
-  background-color: beige;
-}
-main .Products {
-  grid-area: Products;
-  background-color: brown;
-}
-main .Options {
-  grid-area: Options;
-  background-color: chocolate;
-}
-main .Sidebar2 {
-  grid-area: Sidebar2;
-  background-color: springgreen;
-}
-
 footer {
   grid-area: footer;
   text-align: center;
+}
+
+#blog .grid-container {
+  grid-area: main;
+  display: grid;
+  grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
+}
+#blog #Blogtitle {
+  grid-area: Blogtitle;
+  background-color: cornflowerblue;
+}
+#blog #Blogtext {
+  grid-area: Blogtext;
+  background-color: firebrick;
+}
+#blog #Blogimage {
+  grid-area: Blogimage;
+  background-color: darkorchid;
+}
+#blog #Blogtime {
+  grid-area: Blogtime;
+  background-color: green;
 }/*# sourceMappingURL=style.css.map */

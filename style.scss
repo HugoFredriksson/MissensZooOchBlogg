@@ -1,3 +1,39 @@
+#index {
+  main {
+    grid-area: main;
+    background-color: rgb(255, 255, 255);
+    .grid-container {
+      height: 800px;
+      display: grid;
+      grid-template-areas: 
+      'Sidebar1  Options Options Options Options Sidebar2'
+      'Sidebar1  Products Products Products Products Sidebar2'
+      'Sidebar1  Products Products Products Products Sidebar2'
+      'Sidebar1  Products Products Products Products Sidebar2';
+    }
+    background-color: azure;
+    
+    .Sidebar1 {
+      grid-area: Sidebar1;
+      background-color: beige;
+    }
+    .Products {
+      grid-area: Products;
+      background-color: brown;
+      display: inline;
+    }
+
+    .Options {
+      grid-area: Options;
+      background-color: chocolate;
+    }
+    .Sidebar2 {
+      grid-area: Sidebar2;
+      background-color: springgreen;
+    }
+  }
+  
+}
 .wrapper {
     display: grid;
     margin: 0;
@@ -53,42 +89,38 @@
     grid-column: 5;
 }
 
-  main {
-    grid-area: main;
-    background-color: rgb(255, 255, 255);
-    .grid-container {
-      height: 800px;
-      display: grid;
-      grid-template-areas: 
-      'Sidebar1  Options Options Options Options Sidebar2'
-      'Sidebar1  Products Products Products Products Sidebar2'
-      'Sidebar1  Products Products Products Products Sidebar2'
-      'Sidebar1  Products Products Products Products Sidebar2';
-    }
-    background-color: azure;
-    
-    .Sidebar1 {
-      grid-area: Sidebar1;
-      background-color: beige;
-    }
-    .Products {
-      grid-area: Products;
-      background-color: brown;
-    }
-
-    .Options {
-      grid-area: Options;
-      background-color: chocolate;
-    }
-    .Sidebar2 {
-      grid-area: Sidebar2;
-      background-color: springgreen;
-    }
-  }
   
   footer {
     grid-area: footer;
     text-align: center;
   }
 
-  
+  #blog {
+    .grid-container {
+      grid-area: main;
+      display: grid;
+      grid-template-areas: 
+      'Blogtitle Blogtext Blogtext Blogtext'
+      'Blogimage Blogtext Blogtext Blogtext'
+      'Blogimage Blogtext Blogtext Blogtext'
+      'Blogimage Blogtext Blogtext Blogtext'
+      'Blogtime Blogtext Blogtext Blogtext'
+      'Blogtime Blogtext Blogtext Blogtext';
+    }
+    #Blogtitle {
+      grid-area: Blogtitle;
+      background-color: cornflowerblue;
+    }
+    #Blogtext {
+      grid-area: Blogtext;
+      background-color: firebrick;
+    }
+    #Blogimage {
+      grid-area: Blogimage;
+      background-color: darkorchid;
+    }
+    #Blogtime {
+      grid-area: Blogtime;
+      background-color: green;
+    }
+  }
