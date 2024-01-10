@@ -1,4 +1,5 @@
 #index .wrapper {
+  height: 100px;
   display: grid;
   margin: 0;
   grid-template-rows: 160px auto 30px;
@@ -10,9 +11,10 @@
   background-color: rgb(255, 255, 255);
 }
 #index main .grid-container {
-  height: 800px;
+  height: 100%;
   display: grid;
   grid-template-columns: 100px auto 100px;
+  grid-template-rows: auto;
   grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
 }
 #index main .Sidebar1 {
