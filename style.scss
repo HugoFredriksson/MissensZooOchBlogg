@@ -1,43 +1,5 @@
 #index {
-  main {
-    grid-area: main;
-    background-color: rgb(255, 255, 255);
-    .grid-container {
-      height: 800px;
-      display: grid;
-      grid-template-areas: 
-      'Sidebar1  Options Options Options Options Sidebar2'
-      'Sidebar1  Products Products Products Products Sidebar2'
-      'Sidebar1  Products Products Products Products Sidebar2'
-      'Sidebar1  Products Products Products Products Sidebar2';
-    }
-    background-color: azure;
-    
-    .Sidebar1 {
-      grid-area: Sidebar1;
-      background-color: beige;
-    }
-    .Products {
-      grid-area: Products;
-      background-color: brown;
-      display: grid;
-      grid-template-columns: repeat(4, 0.5fr);
-      place-items: stretch;
-      
-    }
-
-    .Options {
-      grid-area: Options;
-      background-color: chocolate;
-    }
-    .Sidebar2 {
-      grid-area: Sidebar2;
-      background-color: springgreen;
-    }
-  }
-  
-}
-.wrapper {
+  .wrapper {
     display: grid;
     margin: 0;
     grid-template-rows: 160px auto 30px;
@@ -46,6 +8,63 @@
     "main" 
     "footer";
   }
+  main {
+    grid-area: main;
+    background-color: rgb(255, 255, 255);
+    .grid-container {
+      height: 800px;
+      display: grid;
+      grid-template-columns: 100px auto 100px;
+      grid-template-areas: 
+      'Sidebar1  Options Options Options Options Sidebar2'
+      'Sidebar1  Products Products Products Products Sidebar2'
+      'Sidebar1  Products Products Products Products Sidebar2'
+      'Sidebar1  Products Products Products Products Sidebar2';
+    }
+    background-color: rgb(255, 255, 255);
+    
+    .Sidebar1 {
+      grid-area: Sidebar1;
+      background-color: rgb(255, 255, 255);
+      
+    }
+    .Products {
+      grid-area: Products;
+      background-color: rgb(255, 255, 255);
+      display: grid;
+      grid-template-columns: repeat(4, 0.5fr);
+      place-items: stretch;
+      grid-gap: 10px;
+        article {
+          text-align: center;
+          border: 2px black solid;
+        }
+        a {
+          border: 2px solid black;
+          background-color: green;
+          color: white;
+        }
+        img {
+          border: 2px solid black;
+        }
+    }
+
+    .Options {
+      grid-area: Options;
+      background-color: rgb(255, 255, 255);
+      border: 2px solid black;
+      text-align: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    .Sidebar2 {
+      grid-area: Sidebar2;
+      background-color: rgb(255, 255, 255);
+    }
+  }
+  
+}
+
   #LogIn {
     text-align: center;
   }
@@ -56,7 +75,7 @@
         background-color: mediumaquamarine;
         ul {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
             gap: 10px;   
             li {
                 background-color: mediumaquamarine;
