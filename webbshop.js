@@ -64,7 +64,7 @@ const productsArray = [
     },
     {
         productId: 8,
-        productDescription: "Mystisk hunddemon skulptur, indred hemmet med denna sataniska prydnad.",
+        productDescription: "Mystisk hunddemon skulptur, inred hemmet med denna sataniska prydnad.",
         productName: "Hunddemon.",
         productCategory: "Kategori 8",
         productPrice: "299:-",

@@ -1,56 +1,5 @@
-#index .wrapper {
-  height: 100px;
-  display: grid;
-  margin: 0;
-  grid-template-rows: 160px auto 30px;
-  grid-template-areas: "header" "main" "footer";
-}
-#index main {
+main {
   grid-area: main;
-  background-color: rgb(255, 255, 255);
-  background-color: rgb(255, 255, 255);
-}
-#index main .grid-container {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 100px auto 100px;
-  grid-template-rows: auto;
-  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
-}
-#index main .Sidebar1 {
-  grid-area: Sidebar1;
-  background-color: rgb(255, 255, 255);
-}
-#index main .Products {
-  grid-area: Products;
-  background-color: rgb(255, 255, 255);
-  display: grid;
-  grid-template-columns: repeat(4, 0.5fr);
-  place-items: stretch;
-  grid-gap: 10px;
-}
-#index main .Products article {
-  text-align: center;
-  border: 2px black solid;
-}
-#index main .Products a {
-  border: 2px solid black;
-  background-color: green;
-  color: white;
-}
-#index main .Products img {
-  border: 2px solid black;
-}
-#index main .Options {
-  grid-area: Options;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-#index main .Sidebar2 {
-  grid-area: Sidebar2;
   background-color: rgb(255, 255, 255);
 }
 
@@ -107,24 +56,73 @@ footer {
   text-align: center;
 }
 
+#index .wrapper {
+  height: 100px;
+  display: grid;
+  margin: 0;
+  grid-template-rows: 160px auto 30px;
+  grid-template-areas: "header" "main" "footer";
+}
+#index .wrapper .grid-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+  grid-template-rows: auto;
+  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
+}
+#index .wrapper .grid-container .Products {
+  grid-area: Products;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  place-items: stretch;
+  grid-gap: 10px;
+}
+#index .wrapper .grid-container .Products article {
+  text-align: center;
+  border: 2px black solid;
+}
+#index .wrapper .grid-container .Products a {
+  border: 2px solid black;
+  background-color: green;
+  color: white;
+}
+#index .wrapper .grid-container .Products img {
+  border: 2px solid black;
+}
+#index .wrapper .grid-container .Options {
+  grid-area: Options;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 #blog .grid-container {
   grid-area: main;
   display: grid;
-  grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
+  grid-template-columns: 100px auto 100px;
+  grid-template-areas: "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2";
 }
-#blog #Blogtitle {
+#blog .blog {
+  grid-area: Blog;
+  display: grid;
+  grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
+}
+#blog .blog #Blogtitle {
   grid-area: Blogtitle;
   background-color: cornflowerblue;
 }
-#blog #Blogtext {
+#blog .blog #Blogtext {
   grid-area: Blogtext;
   background-color: firebrick;
 }
-#blog #Blogimage {
+#blog .blog #Blogimage {
   grid-area: Blogimage;
   background-color: darkorchid;
 }
-#blog #Blogtime {
+#blog .blog #Blogtime {
   grid-area: Blogtime;
   background-color: green;
 }/*# sourceMappingURL=style.css.map */
