@@ -52,7 +52,6 @@ header {
 footer {
   grid-area: footer;
   text-align: center;
-  position: absolute;
   bottom: 0;
   width: 100%;
   height: 2.5rem;
@@ -114,7 +113,6 @@ footer {
     }
   }
 }
-    
     
 #blog {
   .grid-container {
@@ -195,4 +193,45 @@ footer {
   .profileLogout{
     cursor: pointer;
   }
+}
+
+#cart{
+  h2{
+    text-align: center;
+    font-size: 2em;
+  }
+  p{
+    text-align: center;
+    font-size: 1em;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+  }
+
+  form {
+    display: flex;
+    flex-direction: column; 
+    width: 200px; 
+  }
+
+  .form-column {
+    flex: 1; 
+    margin-right: 20px; 
+  }
+
+  label, input {
+    display: block; 
+    margin-bottom: 10px; 
+  }
+
+  #submit-button {
+    margin-top: 10px; 
+  }
+}
+
+#change-password{
+
 }
