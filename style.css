@@ -1,6 +1,7 @@
 main {
   grid-area: main;
   background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 0px 10px white;
 }
 
 #LogIn {
@@ -13,11 +14,11 @@ header {
 }
 header nav {
   background-color: mediumaquamarine;
+  box-shadow: 0px 0px 0px 10px mediumaquamarine;
 }
 header nav ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 header nav ul li {
   background-color: mediumaquamarine;
@@ -76,18 +77,24 @@ footer {
   display: grid;
   grid-template-columns: repeat(4, 0.5fr);
   place-items: stretch;
-  grid-gap: 10px;
+  padding: 20px;
+  grid-gap: 20px;
 }
 #index .wrapper .grid-container .Products article {
   text-align: center;
   border: 2px black solid;
+  padding-bottom: 10px;
 }
 #index .wrapper .grid-container .Products a {
   border: 2px solid black;
   background-color: green;
   color: white;
 }
+#index .wrapper .grid-container .Products a :hover {
+  background-color: red;
+}
 #index .wrapper .grid-container .Products img {
+  margin-top: 10px;
   border: 2px solid black;
 }
 #index .wrapper .grid-container .Options {
@@ -101,6 +108,7 @@ footer {
 
 #blog .grid-container {
   grid-area: main;
+  padding-top: 10px;
   display: grid;
   grid-template-columns: 100px auto 100px;
   grid-template-areas: "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2";
@@ -108,6 +116,7 @@ footer {
 #blog .blog {
   grid-area: Blog;
   display: grid;
+  grid-template-columns: repeat(1, 2fr);
   grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
 }
 #blog .blog #Blogtitle {
@@ -125,4 +134,35 @@ footer {
 #blog .blog #Blogtime {
   grid-area: Blogtime;
   background-color: green;
+}
+
+#cart h2 {
+  text-align: center;
+  font-size: 2em;
+}
+#cart p {
+  text-align: center;
+  font-size: 1em;
+}
+#cart .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+#cart form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+#cart .form-column {
+  flex: 1;
+  margin-right: 20px;
+}
+#cart label, #cart input {
+  display: block;
+  margin-bottom: 10px;
+}
+#cart #submit-button {
+  margin-top: 10px;
 }/*# sourceMappingURL=style.css.map */

@@ -1,7 +1,7 @@
-
 main {
   grid-area: main;
   background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 0px 10px white;
 }
 #LogIn {
   text-align: center;
@@ -11,10 +11,10 @@ header {
   grid-area: header;
   nav {
       background-color: mediumaquamarine;
+      box-shadow: 0px 0px 0px 10px mediumaquamarine;
       ul {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-          gap: 10px;   
+          grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr ;   
           li {
               background-color: mediumaquamarine;
               a {
@@ -29,6 +29,7 @@ header {
       }
   }
 }
+
 .Home {
   grid-column: 1;
 }
@@ -81,17 +82,23 @@ text-align: center;
         display: grid;
         grid-template-columns: repeat(4, 0.5fr);
         place-items: stretch;
-        grid-gap: 10px;
+        padding: 20px;
+        grid-gap: 20px;
           article {
             text-align: center;
             border: 2px black solid;
+            padding-bottom: 10px;
           }
           a {
             border: 2px solid black;
             background-color: green;
             color: white;
           }
+          a :hover {
+            background-color: red;
+          }
           img {
+            margin-top: 10px;
             border: 2px solid black;
           }
       }
@@ -107,11 +114,11 @@ text-align: center;
     }
   }
 }
-    
-    
+       
 #blog {
   .grid-container {
      grid-area: main;
+     padding-top: 10px;
      display: grid;
      grid-template-columns: 100px auto 100px;
      grid-template-areas: 
@@ -124,6 +131,7 @@ text-align: center;
   .blog {
     grid-area: Blog;
     display: grid;
+    grid-template-columns: repeat(1, 2fr);
     grid-template-areas: 
     'Blogtitle Blogtext Blogtext Blogtext'
     'Blogimage Blogtext Blogtext Blogtext'
@@ -149,4 +157,41 @@ text-align: center;
 
   }
   
+}
+
+#cart{
+  h2{
+    text-align: center;
+    font-size: 2em;
+  }
+  p{
+    text-align: center;
+    font-size: 1em;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+  }
+
+  form {
+    display: flex;
+    flex-direction: column; 
+    width: 200px; 
+  }
+
+  .form-column {
+    flex: 1; 
+    margin-right: 20px; 
+  }
+
+  label, input {
+    display: block; 
+    margin-bottom: 10px; 
+  }
+
+  #submit-button {
+    margin-top: 10px; 
+  }
 }

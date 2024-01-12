@@ -6,7 +6,14 @@ const productsArray = [
         productCategory: "Kategori 1",
         productPrice: "99:-",
         productStock: 5,
-        productImage: "image1.png"
+        productImage: "image1.png",
+        portionPerDay: "1",
+        articleNumber: "1", 
+        rating: "2",
+        feedAmount: "3",
+        foodInfo: "Kcal: 140/100 gram",
+        onSale: "false",
+        salePercentage: "null"
     },
     {
         productId: 2,
@@ -15,7 +22,15 @@ const productsArray = [
         productCategory: "Kategori 2",
         productPrice: "79:-",
         productStock: 10,
-        productImage: "image2.png"
+        productImage: "image2.png",
+        portionPerDay: "1",
+        articleNumber: "2", 
+        rating: "2",
+        feedAmount: "2",
+        foodInfo: "Kcal: 120/100 gram",
+        onSale: "true",
+        salePercentage: "20%"
+
     },
     {
         productId: 3,
@@ -24,7 +39,15 @@ const productsArray = [
         productCategory: "Kategori 3",
         productPrice: "349:-",
         productStock: 10,
-        productImage: "image3.png"
+        productImage: "image3.png",
+        portionPerDay: "1",
+        articleNumber: "3", 
+        rating: "3",
+        feedAmount: "3",
+        foodInfo: "Kcal: 180/100 gram",
+        onSale: "true",
+        salePercentage: "40%"
+
     },
     {
         productId: 4,
@@ -33,7 +56,14 @@ const productsArray = [
         productCategory: "Kategori 4",
         productPrice: "499:-",
         productStock: 10,
-        productImage: "image4.png"
+        productImage: "image4.png",
+        portionPerDay: "1",
+        articleNumber: "4", 
+        rating: "4",
+        feedAmount: "4",
+        foodInfo: "Kcal: 200/100 gram",
+        onSale: "false",
+        salePercentage: "null"
     },
     {
         productId: 5,
@@ -42,7 +72,14 @@ const productsArray = [
         productCategory: "Kategori 5",
         productPrice: "199:-",
         productStock: 10,
-        productImage: "image5.png"
+        productImage: "image5.png",
+        portionPerDay: "5",
+        articleNumber: "2", 
+        rating: "5",
+        feedAmount: "5",
+        foodInfo: "Kcal: 1200/100 gram",
+        onSale: "true",
+        salePercentage: "10%"
     },
     {
         productId: 6,
@@ -51,7 +88,14 @@ const productsArray = [
         productCategory: "Kategori 6",
         productPrice: "149:-",
         productStock: 10,
-        productImage: "image6.png"
+        productImage: "image6.png",
+        portionPerDay: "1",
+        articleNumber: "6", 
+        rating: "2",
+        feedAmount: "3",
+        foodInfo: "Kcal: 970/100 gram",
+        onSale: "false",
+        salePercentage: "null"
     },
     {
         productId: 7,
@@ -60,7 +104,14 @@ const productsArray = [
         productCategory: "Kategori 7",
         productPrice: "49:-",
         productStock: 10,
-        productImage: "image7.png"
+        productImage: "image7.png",
+        portionPerDay: "4.5",
+        articleNumber: "7", 
+        rating: "1",
+        feedAmount: "7",
+        foodInfo: "Kcal: 450/100 gram",
+        onSale: "true",
+        salePercentage: "25%"
     },
     {
         productId: 8,
@@ -69,7 +120,14 @@ const productsArray = [
         productCategory: "Kategori 8",
         productPrice: "299:-",
         productStock: 10,
-        productImage: "image8.png"
+        productImage: "image8.png",
+        portionPerDay: "5",
+        articleNumber: "8", 
+        rating: "5",
+        feedAmount: "10",
+        foodInfo: "Kcal: 0/100 gram",
+        onSale: "false",
+        salePercentage: "null"
     },
     {
         productId: 9,
@@ -78,7 +136,14 @@ const productsArray = [
         productCategory: "Kategori 9",
         productPrice: "179:-",
         productStock: 10,
-        productImage: "image9.png"
+        productImage: "image9.png",
+        portionPerDay: "1",
+        articleNumber: "9", 
+        rating: "3",
+        feedAmount: "2",
+        foodInfo: "Kcal: 120/100 gram",
+        onSale: "true",
+        salePercentage: "20%"
     },  
 ];
 
@@ -95,16 +160,31 @@ function generateProducts(productsArray) {
         const article = document.createElement("article");
         const img = document.createElement("img");
         const h3 = document.createElement("h3");
+        const rating = document.createElement("p");
         const p = document.createElement("p");
         const a = document.createElement("a");
 
         img.src = productInfo.productImage;
         h3.textContent = productInfo.productName;
+        rating.textContent = productInfo.rating + "⭐";
         p.textContent = productInfo.productDescription;
-        a.textContent = "Köp " + productInfo.productPrice;
+        
+         
+         if (productInfo.onSale === "true") {
+            const originalPrice = parseFloat(productInfo.productPrice);
+            const salePercentage = parseFloat(productInfo.salePercentage);
+            const salePrice = (originalPrice * (100 - salePercentage)) / 100;
+
+            a.style.color = "white";
+            a.textContent = "Köp " + salePrice.toFixed(2) + ":- (Rabatt: " + productInfo.salePercentage + ")";
+        } else {
+            
+            a.textContent = "Köp " + productInfo.productPrice;
+        }
 
         article.appendChild(img);
         article.appendChild(h3);
+        article.appendChild(rating)
         article.appendChild(p);
         article.appendChild(a);
 
