@@ -1,56 +1,5 @@
-#index .wrapper {
-  height: 100px;
-  display: grid;
-  margin: 0;
-  grid-template-rows: 160px auto 30px;
-  grid-template-areas: "header" "main" "footer";
-}
-#index main {
+main {
   grid-area: main;
-  background-color: rgb(255, 255, 255);
-  background-color: rgb(255, 255, 255);
-}
-#index main .grid-container {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 100px auto 100px;
-  grid-template-rows: auto;
-  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
-}
-#index main .Sidebar1 {
-  grid-area: Sidebar1;
-  background-color: rgb(255, 255, 255);
-}
-#index main .Products {
-  grid-area: Products;
-  background-color: rgb(255, 255, 255);
-  display: grid;
-  grid-template-columns: repeat(4, 0.5fr);
-  place-items: stretch;
-  grid-gap: 10px;
-}
-#index main .Products article {
-  text-align: center;
-  border: 2px black solid;
-}
-#index main .Products a {
-  border: 2px solid black;
-  background-color: green;
-  color: white;
-}
-#index main .Products img {
-  border: 2px solid black;
-}
-#index main .Options {
-  grid-area: Options;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-#index main .Sidebar2 {
-  grid-area: Sidebar2;
   background-color: rgb(255, 255, 255);
 }
 
@@ -75,6 +24,7 @@ header nav ul li {
   list-style: none;
 }
 header nav ul li a {
+  font-size: 1.5em;
   text-decoration: none;
   color: white;
 }
@@ -105,12 +55,62 @@ header nav ul li img {
 footer {
   grid-area: footer;
   text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+footer p {
+  font-size: 1em;
+}
+
+#index .wrapper {
+  height: 100px;
+  display: grid;
+  margin: 0;
+  grid-template-rows: 160px auto 30px;
+  grid-template-areas: "header" "main" "footer";
+}
+#index .wrapper .grid-container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+  grid-template-rows: auto;
+  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
+}
+#index .wrapper .grid-container .Products {
+  grid-area: Products;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: repeat(4, 0.5fr);
+  place-items: stretch;
+  grid-gap: 10px;
+}
+#index .wrapper .grid-container .Products article {
+  text-align: center;
+  border: 2px black solid;
+}
+#index .wrapper .grid-container .Products a {
+  border: 2px solid black;
+  background-color: green;
+  color: white;
+}
+#index .wrapper .grid-container .Products img {
+  border: 2px solid black;
+}
+#index .wrapper .grid-container .Options {
+  grid-area: Options;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid black;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #blog .grid-container {
   grid-area: main;
   display: grid;
-  grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
+  grid-template-areas: "Sidebar1 Blogtitle Blogtext Blogtext Blogtext Sidebar2" "Sidebar1 Blogimage Blogtext Blogtext Blogtext Sidebar2" "Sidebar1 Blogimage Blogtext Blogtext Blogtext Sidebar2" "Sidebar1 Blogimage Blogtext Blogtext Blogtext Sidebar2" "Sidebar1 Blogtime Blogtext Blogtext Blogtext Sidebar2" "Sidebar1 Blogtime Blogtext Blogtext Blogtext Sidebar2";
 }
 #blog #Blogtitle {
   grid-area: Blogtitle;
@@ -127,4 +127,48 @@ footer {
 #blog #Blogtime {
   grid-area: Blogtime;
   background-color: green;
+}
+
+#profile .grid-container {
+  display: grid;
+  grid-template-areas: "username" "email" "password" "changePassword" "logout";
+}
+#profile .grid-container .profileName {
+  grid-area: username;
+}
+#profile .grid-container .profileEmail {
+  grid-area: email;
+}
+#profile .grid-container .profilePassword {
+  grid-area: password;
+}
+#profile .grid-container .profileChangePassword {
+  grid-area: changePassword;
+}
+#profile .grid-container .profileLogout {
+  grid-area: logout;
+}
+#profile h2 {
+  font-size: 2em;
+  text-align: center;
+}
+#profile p {
+  text-align: center;
+  font-size: 1.5em;
+}
+#profile li {
+  list-style: none;
+  text-align: center;
+  padding: 15px;
+}
+#profile a {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: black;
+}
+#profile .profileChangePassword {
+  cursor: pointer;
+}
+#profile .profileLogout {
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
