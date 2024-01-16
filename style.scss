@@ -227,6 +227,34 @@ footer {
     margin-bottom: 10px; 
   }
 
+  span{
+    color: red;
+  }
+
+  #zipcode{
+    width: 45px;
+  }
+
+  #city{
+    width: 100px;
+  }
+
+  #phonenumber{
+    width: 100px;
+  }
+
+  #cardnumber{
+    width: 140px;
+  }
+
+  #date{
+    width: 40px;
+  }
+
+  #cvv{
+    width: 30px;
+  }
+
   #submit-button {
     margin-top: 10px; 
   }

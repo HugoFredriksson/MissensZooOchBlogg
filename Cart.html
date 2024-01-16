@@ -28,39 +28,47 @@
             <h2>Kundvagn</h2>
             <p>Pris: </p>
             <p>Dina produkter:</p>
-            <div class="container">
-              <form action="/action_page.php">
-                <div class="form-column">
-                  <label for="zip">Postnummer:</label>
-                  <input type="text" name="zip" id="zip">
-                  
-                  <label for="city">Ort:</label>
-                  <input type="text" name="city" id="city">
-                  
-                  <label for="address">Adress:</label>
-                  <input type="address" name="address" id="address">
-                  
-                  <label for="phonenumber">Telefonnummer:</label>
-                  <input type="tel" name="phonenumber" id="phonenumber">
-                  
-                  <label for="email">Email:</label>
-                  <input type="email" name="email" id="email">
-                </div>
-          
-                <div class="form-column">
-                  <label for="cardnumber">Kortnummer:</label>
-                  <input type="text" name="cardnumber" id="cardnumber">
-                  
-                  <label for="date">ÅÅ/MM:</label>
-                  <input type="text" name="date" id="date">
-                  
-                  <label for="cvv">CVV:</label>
-                  <input type="text" name="cvv" id="cvv">
-                  
-                  <button id="submit-button">Bekräfta Köp</button>
-                </div>
-              </form>
-            </div>
+              <div class="container">
+                <form action="/action_page.php">
+                  <div class="form-column">
+                    <label for="zip">Postnummer:</label>
+                    <input type="text" name="zip" id="zipcode">
+                    <span id="errorZip"></span>
+                    
+                    <label for="city">Ort:</label>
+                    <input type="text" name="city" id="city">
+                    <span id="errorCity"></span>
+
+                    <label for="address">Adress:</label>
+                    <input type="address" name="address" id="address">
+                    <span id="errorAddress"></span>
+
+                    <label for="phonenumber">Telefonnummer:</label>
+                    <input type="tel" name="phonenumber" id="phonenumber">
+                    <span id="errorPhoneNumber"></span>
+
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email">
+                    <span id="errorEmail"></span>
+                  </div>
+            
+                  <div class="form-column">
+                    <label for="cardnumber">Kortnummer:</label>
+                    <input type="text" name="cardnumber" id="cardnumber">
+                    <span id="errorCardNumber"></span>
+                    
+                    <label for="date">ÅÅ/MM:</label>
+                    <input type="text" name="date" id="date">
+                    <span id="errorDate"></span>
+                    
+                    <label for="cvv">CVV:</label>
+                    <input type="text" name="cvv" id="cvv">
+                    <span id="errorCVV"></span>
+                    
+                    <button id="submit-button">Bekräfta Köp</button>
+                  </div>
+                </form>
+              </div>
         </main>
 
         <footer>

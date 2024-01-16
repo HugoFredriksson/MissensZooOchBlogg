@@ -199,6 +199,27 @@ footer p {
   display: block;
   margin-bottom: 10px;
 }
+#cart span {
+  color: red;
+}
+#cart #zipcode {
+  width: 45px;
+}
+#cart #city {
+  width: 100px;
+}
+#cart #phonenumber {
+  width: 100px;
+}
+#cart #cardnumber {
+  width: 140px;
+}
+#cart #date {
+  width: 40px;
+}
+#cart #cvv {
+  width: 30px;
+}
 #cart #submit-button {
   margin-top: 10px;
 }/*# sourceMappingURL=style.css.map */
