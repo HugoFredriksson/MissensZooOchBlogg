@@ -1,56 +1,5 @@
-#index .wrapper {
-  height: 100px;
-  display: grid;
-  margin: 0;
-  grid-template-rows: 160px auto 30px;
-  grid-template-areas: "header" "main" "footer";
-}
-#index main {
+main {
   grid-area: main;
-  background-color: rgb(255, 255, 255);
-  background-color: rgb(255, 255, 255);
-}
-#index main .grid-container {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 100px auto 100px;
-  grid-template-rows: auto;
-  grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
-}
-#index main .Sidebar1 {
-  grid-area: Sidebar1;
-  background-color: rgb(255, 255, 255);
-}
-#index main .Products {
-  grid-area: Products;
-  background-color: rgb(255, 255, 255);
-  display: grid;
-  grid-template-columns: repeat(4, 0.5fr);
-  place-items: stretch;
-  grid-gap: 10px;
-}
-#index main .Products article {
-  text-align: center;
-  border: 2px black solid;
-}
-#index main .Products a {
-  border: 2px solid black;
-  background-color: green;
-  color: white;
-}
-#index main .Products img {
-  border: 2px solid black;
-}
-#index main .Options {
-  grid-area: Options;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-#index main .Sidebar2 {
-  grid-area: Sidebar2;
   background-color: rgb(255, 255, 255);
 }
 
@@ -67,8 +16,7 @@ header nav {
 }
 header nav ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 10px;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 header nav ul li {
   background-color: mediumaquamarine;
@@ -127,4 +75,41 @@ footer {
 #blog #Blogtime {
   grid-area: Blogtime;
   background-color: green;
+}
+
+#cart h2 {
+  text-align: center;
+  font-size: 2em;
+}
+#cart p {
+  text-align: center;
+  font-size: 1em;
+}
+#cart .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+#cart form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+#cart .form-column {
+  flex: 1;
+  margin-right: 20px;
+}
+#cart label, #cart input {
+  display: block;
+  margin-bottom: 10px;
+}
+#cart #submit-button {
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    background-color: 0;
+  }
 }/*# sourceMappingURL=style.css.map */
