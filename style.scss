@@ -195,3 +195,16 @@ text-align: center;
     margin-top: 10px; 
   }
 }
+
+#CreateBlog {
+  main {
+    text-align: center;
+
+    form {
+      #blogContent {
+        width: 50vw;
+        height: 50vh;
+      }
+    }
+  }
+}

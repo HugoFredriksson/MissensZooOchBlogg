@@ -163,4 +163,12 @@ footer {
 }
 #cart #submit-button {
   margin-top: 10px;
+}
+
+#CreateBlog main {
+  text-align: center;
+}
+#CreateBlog main form #blogContent {
+  width: 50vw;
+  height: 50vh;
 }/*# sourceMappingURL=style.css.map */
