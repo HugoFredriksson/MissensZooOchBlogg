@@ -12,7 +12,7 @@ const productsArray = [
         rating: "2",
         feedAmount: "3",
         foodInfo: "Kcal: 140/100 gram",
-        onSale: "false",
+        onSale: false,
         salePercentage: null
     },
     {
@@ -28,7 +28,7 @@ const productsArray = [
         rating: 2,
         feedAmount: 2,
         foodInfo: "Kcal: 120/100 gram",
-        onSale: "true",
+        onSale: true,
         salePercentage: 20
 
     },
@@ -45,7 +45,7 @@ const productsArray = [
         rating: 3,
         feedAmount: 3,
         foodInfo: "Kcal: 180/100 gram",
-        onSale: "true",
+        onSale: true,
         salePercentage: 40
 
     },
@@ -62,7 +62,7 @@ const productsArray = [
         rating: 4,
         feedAmount: 4,
         foodInfo: "Kcal: 200/100 gram",
-        onSale: "false",
+        onSale: false,
         salePercentage: null
     },
     {
@@ -78,7 +78,7 @@ const productsArray = [
         rating: 5,
         feedAmount: 5,
         foodInfo: "Kcal: 1200/100 gram",
-        onSale: "true",
+        onSale: true,
         salePercentage: 10
     },
     {
@@ -94,7 +94,7 @@ const productsArray = [
         rating: 2,
         feedAmount: 3,
         foodInfo: "Kcal: 970/100 gram",
-        onSale: "false",
+        onSale: false,
         salePercentage: null
     },
     {
@@ -110,7 +110,7 @@ const productsArray = [
         rating: 1,
         feedAmount: 7,
         foodInfo: "Kcal: 450/100 gram",
-        onSale: "true",
+        onSale: true,
         salePercentage: 25
     },
     {
@@ -126,7 +126,7 @@ const productsArray = [
         rating: 5,
         feedAmount: 10,
         foodInfo: "Kcal: 0/100 gram",
-        onSale: "false",
+        onSale: false,
         salePercentage: null
     },
     {
@@ -142,13 +142,14 @@ const productsArray = [
         rating: 3,
         feedAmount: 2,
         foodInfo: "Kcal: 120/100 gram",
-        onSale: "true",
-        salePercentage: "20"
+        onSale: true,
+        salePercentage: 20
     },  
 ];
 
 function init() {
     generateProducts(productsArray);
+    console.log(productsArray)
 }
 
 window.onload = init;
@@ -162,7 +163,7 @@ function generateProducts(productsArray) {
         const h3 = document.createElement("h3");
         const rating = document.createElement("p");
         const p = document.createElement("p");
-        const a = document.createElement("a");
+        const button = document.createElement("button");
 
         img.src = productInfo.productImage;
         h3.textContent = productInfo.productName;
@@ -170,23 +171,22 @@ function generateProducts(productsArray) {
         p.textContent = productInfo.productDescription;
         
          
-         if (productInfo.onSale === "true") {
+         if (productInfo.onSale === true) {
             const originalPrice = parseFloat(productInfo.productPrice);
             const salePercentage = parseFloat(productInfo.salePercentage);
             const salePrice = (originalPrice * (100 - salePercentage)) / 100;
 
-            a.style.color = "white";
-            a.textContent = "Köp " + salePrice.toFixed(2) + " SEK (Rabatt: " + productInfo.salePercentage + "%, Originalpris " + originalPrice + " SEK )";
+            button.textContent = "Köp " + salePrice.toFixed(2) + " SEK (Rabatt: " + productInfo.salePercentage + "%, Originalpris " + originalPrice + " SEK )";
         } else {
             
-            a.textContent = "Köp " + productInfo.productPrice + " SEK";
+            button.textContent = "Köp " + productInfo.productPrice + " SEK";
         }
 
         article.appendChild(img);
         article.appendChild(h3);
         article.appendChild(rating)
         article.appendChild(p);
-        article.appendChild(a);
+        article.appendChild(button);
 
         productContainer.appendChild(article);
     });

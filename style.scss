@@ -156,6 +156,18 @@ text-align: center;
     }
 
   }
+
+  @media only screen and (max-width: 850px) {
+    .grid-container {
+      background-color: red;
+      grid-template-areas:
+      'Blogtitle'
+      'Blogimage'
+      'Blogtime'
+      'Blogtext';
+    }
+    
+  }
   
 }
 
@@ -179,6 +191,7 @@ text-align: center;
     display: flex;
     flex-direction: column; 
     width: 200px; 
+    text-align: center;
   }
 
   .form-column {

@@ -133,6 +133,12 @@ footer {
   grid-area: Blogtime;
   background-color: green;
 }
+@media only screen and (max-width: 850px) {
+  #blog .grid-container {
+    background-color: red;
+    grid-template-areas: "Blogtitle" "Blogimage" "Blogtime" "Blogtext";
+  }
+}
 
 #cart h2 {
   text-align: center;
@@ -152,6 +158,7 @@ footer {
   display: flex;
   flex-direction: column;
   width: 200px;
+  text-align: center;
 }
 #cart .form-column {
   flex: 1;
