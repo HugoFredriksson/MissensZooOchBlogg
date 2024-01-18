@@ -1,194 +1,81 @@
+let productsArray;
+
+/*
 const productsArray = [
     {
-        productId: 1,
-        productDescription: "Håll dina tår varma med dessa gulliga kattstrumpor av hög kvalitet. En perfekt present till kattälskaren!",
-        productName: "Kattstrumpor",
-        productCategory: "Övrigt",
-        productPrice: "99",
-        productStock: 5,
-        productImage: "image1.png",
+        id: 1,
+        description: "Håll dina tår varma med dessa gulliga kattstrumpor av hög kvalitet. En perfekt present till kattälskaren!",
+        name: "Kattstrumpor",
+        category: "Övrigt",
+        price: "99",
+        inStock: 5,
+        image: "image1.png",
         portionPerDay: "1",
         articleNumber: "1", 
         rating: "2",
-        feedAmount: "3",
         foodInfo: "Kcal: 140/100 gram",
         onSale: false,
         salePercentage: null
-    },
-    {
-        productId: 2,
-        productDescription: "Ge din hamster lite träning och skratt med dessa små, handgjorda boxningshandskar. Perfekt för de små kämparna!",
-        productName: "Boxningshandskar för hamstrar.",
-        productCategory: "Övrigt",
-        productPrice: "79",
-        productStock: 10,
-        productImage: "image2.png",
-        portionPerDay: 1,
-        articleNumber: 2, 
-        rating: 2,
-        feedAmount: 2,
-        foodInfo: "Kcal: 120/100 gram",
-        onSale: true,
-        salePercentage: 20
-
-    },
-    {
-        productId: 3,
-        productDescription: "Utforska fantasin med denna unika rådjurskanot! En dekorativ och konversationsvänlig prydnad till ditt hem.",
-        productName: "Rådjurs kanot.",
-        productCategory: "Övrigt",
-        productPrice: "349",
-        productStock: 10,
-        productImage: "image3.png",
-        portionPerDay: 1,
-        articleNumber: 3, 
-        rating: 3,
-        feedAmount: 3,
-        foodInfo: "Kcal: 180/100 gram",
-        onSale: true,
-        salePercentage: 40
-
-    },
-    {
-        productId: 4,
-        productDescription: "Res säkert med din fyrbenta vän med vår bekväma och robusta hundtransport. Perfekt för resor och äventyr!",
-        productName: "Hundtransport.",
-        productCategory: "Djur",
-        productPrice: "499",
-        productStock: 10,
-        productImage: "image4.png",
-        portionPerDay: 1,
-        articleNumber: 4, 
-        rating: 4,
-        feedAmount: 4,
-        foodInfo: "Kcal: 200/100 gram",
-        onSale: false,
-        salePercentage: null
-    },
-    {
-        productId: 5,
-        productDescription: "Klä din hund i stil med denna militära uniform. En cool och trendig look för din lojala kamrat.",
-        productName: "Hund Militär.",
-        productCategory: "Djur",
-        productPrice: "199",
-        productStock: 10,
-        productImage: "image5.png",
-        portionPerDay: 5,
-        articleNumber: 2, 
-        rating: 5,
-        feedAmount: 5,
-        foodInfo: "Kcal: 1200/100 gram",
-        onSale: true,
-        salePercentage: 10
-    },
-    {
-        productId: 6,
-        productDescription: "Ge din häst en lyxig behandling med vår specialdesignade hästolja. Gjord utav genuin häst.",
-        productName: "Hästolja.",
-        productCategory: "Foder",
-        productPrice: "149",
-        productStock: 10,
-        productImage: "image6.png",
-        portionPerDay: 1,
-        articleNumber: 6, 
-        rating: 2,
-        feedAmount: 3,
-        foodInfo: "Kcal: 970/100 gram",
-        onSale: false,
-        salePercentage: null
-    },
-    {
-        productId: 7,
-        productDescription: "Njut av sötheten av våra hamstermuffins! En rolig och underhållande godsak för smådjursägare.",
-        productName: "Hamstermuffin",
-        productCategory: "Foder",
-        productPrice: "49",
-        productStock: 10,
-        productImage: "image7.png",
-        portionPerDay: 4.5,
-        articleNumber: 7, 
-        rating: 1,
-        feedAmount: 7,
-        foodInfo: "Kcal: 450/100 gram",
-        onSale: true,
-        salePercentage: 25
-    },
-    {
-        productId: 8,
-        productDescription: "Mystisk hunddemon skulptur, inred hemmet med denna sataniska prydnad.",
-        productName: "Hunddemon.",
-        productCategory: "Djur",
-        productPrice: "299",
-        productStock: 10,
-        productImage: "image8.png",
-        portionPerDay: 5,
-        articleNumber: 8, 
-        rating: 5,
-        feedAmount: 10,
-        foodInfo: "Kcal: 0/100 gram",
-        onSale: false,
-        salePercentage: null
-    },
-    {
-        productId: 9,
-        productDescription: "Lägg till en touch av mystik med vår kanindemonfigur. Perfekt för dem som älskar det ovanliga och fantasifulla.",
-        productName: "Kanindemon.",
-        productCategory: "Djur",
-        productPrice: "179",
-        productStock: 10,
-        productImage: "image9.png",
-        portionPerDay: 1,
-        articleNumber: 9, 
-        rating: 3,
-        feedAmount: 2,
-        foodInfo: "Kcal: 120/100 gram",
-        onSale: true,
-        salePercentage: 20
-    },  
-];
+    }
+  ];
+*/
 
 function init() {
-    generateProducts(productsArray);
-    console.log(productsArray)
+  getProducts();
 }
 
 window.onload = init;
 
-function generateProducts(productsArray) {
-    const productContainer = document.getElementById("productContainer");
+async function getProducts(){
+  productsArray = await getProductsFetch();
+  console.log(productsArray);
+  generateProducts();
+}
 
-    productsArray.forEach(productInfo => {
-        const article = document.createElement("article");
-        const img = document.createElement("img");
-        const h3 = document.createElement("h3");
-        const rating = document.createElement("p");
-        const p = document.createElement("p");
-        const button = document.createElement("button");
+async function getProductsFetch(){
+  const path = "https://localhost:7128/Product/ViewAllProducts";
 
-        img.src = productInfo.productImage;
-        h3.textContent = productInfo.productName;
-        rating.textContent = productInfo.rating + "⭐";
-        p.textContent = productInfo.productDescription;
+  let response = await fetch(path);
+  console.log(response);
+
+  let json = response.json();
+  return json;
+}
+
+function generateProducts() {
+  const productContainer = document.getElementById("productContainer");
+  console.log(productsArray);
+  productsArray.forEach(productInfo => {
+    const article = document.createElement("article");
+    const img = document.createElement("img");
+    const h3 = document.createElement("h3");
+    const rating = document.createElement("p");
+    const p = document.createElement("p");
+    const button = document.createElement("button");
+
+    img.src = productInfo.image; //If no image error 404 in console
+    h3.textContent = productInfo.name;
+    rating.textContent = productInfo.rating + "⭐";
+    p.textContent = productInfo.description;
         
          
-         if (productInfo.onSale === true) {
-            const originalPrice = parseFloat(productInfo.productPrice);
-            const salePercentage = parseFloat(productInfo.salePercentage);
-            const salePrice = (originalPrice * (100 - salePercentage)) / 100;
+    if (productInfo.onSale === 1) {
+      const originalPrice = parseFloat(productInfo.price);
+      const salesPercentage = parseFloat(productInfo.salesPercentage);
+      const salePrice = (originalPrice * (100 - salesPercentage)) / 100;
+      button.textContent = "Köp " + salePrice.toFixed(2) + " SEK (Rabatt: " + productInfo.salesPercentage + "%, Originalpris " + originalPrice + " SEK )";
 
-            button.textContent = "Köp " + salePrice.toFixed(2) + " SEK (Rabatt: " + productInfo.salePercentage + "%, Originalpris " + originalPrice + " SEK )";
-        } else {
-            
-            button.textContent = "Köp " + productInfo.productPrice + " SEK";
-        }
+      } else {
+        button.textContent = "Köp " + productInfo.price + " SEK";
+      }
 
-        article.appendChild(img);
-        article.appendChild(h3);
-        article.appendChild(rating)
-        article.appendChild(p);
-        article.appendChild(button);
+    article.appendChild(img);
+    article.appendChild(h3);
+    article.appendChild(rating)
+    article.appendChild(p);
+    article.appendChild(button);
 
-        productContainer.appendChild(article);
-    });
+    productContainer.appendChild(article);
+  });
 }
 

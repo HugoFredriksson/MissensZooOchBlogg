@@ -18,8 +18,6 @@ async function logIn() {
     json = {
         "username" : username,
         "password" : password
-
-
     };
     console.log(username, password);
 
