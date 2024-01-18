@@ -83,13 +83,9 @@ footer {
   border: 2px black solid;
   padding-bottom: 10px;
 }
-#index .wrapper .grid-container .Products a {
-  border: 2px solid black;
-  background-color: green;
-  color: white;
-}
-#index .wrapper .grid-container .Products a :hover {
-  background-color: red;
+#index .wrapper .grid-container .Products button:hover {
+  background-color: mediumaquamarine;
+  border: 1px solid rgb(170, 170, 170);
 }
 #index .wrapper .grid-container .Products img {
   margin-top: 10px;
