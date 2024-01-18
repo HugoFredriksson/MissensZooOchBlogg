@@ -128,7 +128,6 @@ text-align: center;
   .blog {
     grid-area: Blog;
     display: grid;
-    grid-template-columns: repeat(1, 2fr);
     grid-template-areas: 
     'Blogtitle Blogtext Blogtext Blogtext'
     'Blogimage Blogtext Blogtext Blogtext'
@@ -162,10 +161,8 @@ text-align: center;
       'Blogimage'
       'Blogtime'
       'Blogtext';
-    }
-    
-  }
-  
+    }    
+  }  
 }
 
 #cart{

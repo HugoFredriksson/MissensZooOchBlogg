@@ -42,6 +42,8 @@ async function getProductsFetch(){
   return json;
 }
 
+
+
 function generateProducts() {
   const productContainer = document.getElementById("productContainer");
   console.log(productsArray);

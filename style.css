@@ -110,7 +110,6 @@ footer {
 #blog .blog {
   grid-area: Blog;
   display: grid;
-  grid-template-columns: repeat(1, 2fr);
   grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
 }
 #blog .blog #Blogtitle {
