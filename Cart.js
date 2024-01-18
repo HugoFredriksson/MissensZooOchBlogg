@@ -16,7 +16,12 @@ let errorCardNumber = document.getElementById("errorCardNumber");
 let errorDate = document.getElementById("errorDate");
 let errorCVV = document.getElementById("errorCVV");
 
+let price = 100;
+
 function init(){
+    createPriceParagraph();
+    createProductsParagraph();
+
     zipCodeInput.addEventListener("input", checkZip);
     cityInput.addEventListener("input", checkCity);
     addressInput.addEventListener("input", checkAddress);
@@ -28,6 +33,18 @@ function init(){
 }
 
 window.onload = init;
+
+function createPriceParagraph(){
+    var priceParagraph = document.createElement("p");
+    priceParagraph.textContent = "Pris: ";
+    document.body.appendChild(priceParagraph);
+}
+
+function createProductsParagraph(){
+    var productsParagraph = document.createElement("p");
+    productsParagraph.textContent = "Produkter: ";
+    document.body.appendChild(productsParagraph);
+}
 
 function checkZip(){
     let zipCodeValue = zipCodeInput.value.trim();
@@ -77,7 +94,7 @@ function checkAddress(){
       }
 }
 
-function checkPhoneNumber() {
+function checkPhoneNumber(){
     let phonenumberValue = phonenumberInput.value.trim();
     let phonenumberRegex = /^(?:(?:\+|00)46\s*|0)?\s*([1-9][0-9]\s*-*\s*[0-9]{2}\s*-*\s*[0-9]{2}\s*-*\s*[0-9]{2,3})$/;
 
