@@ -16,8 +16,6 @@ let errorCardNumber = document.getElementById("errorCardNumber");
 let errorDate = document.getElementById("errorDate");
 let errorCVV = document.getElementById("errorCVV");
 
-let price = 100;
-
 function init(){
     createPriceParagraph();
     createProductsParagraph();
@@ -36,14 +34,17 @@ window.onload = init;
 
 function createPriceParagraph(){
     var priceParagraph = document.createElement("p");
+    priceParagraph.id = "priceParagraph";
     priceParagraph.textContent = "Pris: ";
-    document.body.appendChild(priceParagraph);
+    span.appendChild(priceParagraph);
 }
 
 function createProductsParagraph(){
     var productsParagraph = document.createElement("p");
+    productsParagraph.id = "productsParagraph";
     productsParagraph.textContent = "Produkter: ";
-    document.body.appendChild(productsParagraph);
+    var span = document.createElement("span");
+    span.appendChild(productsParagraph);
 }
 
 function checkZip(){

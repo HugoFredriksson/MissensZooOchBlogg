@@ -20,6 +20,7 @@ header {
               a {
                   text-decoration: none;
                   color: white;
+                  
               }
               list-style: none;
               img {
@@ -173,6 +174,12 @@ text-align: center;
     text-align: center;
     font-size: 2em;
   }
+  #priceParagraph{
+    
+  }
+  #productParagraph{
+    
+  }
   p{
     text-align: center;
     font-size: 1em;
@@ -199,6 +206,9 @@ text-align: center;
   label, input {
     display: block; 
     margin-bottom: 10px; 
+  }
+  span{
+    color: red;
   }
 
   #submit-button {

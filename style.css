@@ -164,6 +164,9 @@ footer {
   display: block;
   margin-bottom: 10px;
 }
+#cart span {
+  color: red;
+}
 #cart #submit-button {
   margin-top: 10px;
 }
