@@ -16,6 +16,10 @@ let errorCardNumber = document.getElementById("errorCardNumber");
 let errorDate = document.getElementById("errorDate");
 let errorCVV = document.getElementById("errorCVV");
 
+var spanBelowH2 = document.querySelector("h2 + span");
+
+let bajs = "Kaka";
+
 function init(){
     createPriceParagraph();
     createProductsParagraph();
@@ -36,15 +40,16 @@ function createPriceParagraph(){
     var priceParagraph = document.createElement("p");
     priceParagraph.id = "priceParagraph";
     priceParagraph.textContent = "Pris: ";
-    span.appendChild(priceParagraph);
+
+    spanBelowH2.appendChild(priceParagraph);
 }
 
 function createProductsParagraph(){
-    var productsParagraph = document.createElement("p");
-    productsParagraph.id = "productsParagraph";
-    productsParagraph.textContent = "Produkter: ";
-    var span = document.createElement("span");
-    span.appendChild(productsParagraph);
+    var productParagraph = document.createElement("p");
+    productParagraph.id = "productParagraph";
+    productParagraph.textContent = "Produkter: ";
+
+    spanBelowH2.appendChild(productParagraph);
 }
 
 function checkZip(){

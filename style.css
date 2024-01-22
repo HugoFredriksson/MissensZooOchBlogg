@@ -140,6 +140,12 @@ footer {
   text-align: center;
   font-size: 2em;
 }
+#cart #priceParagraph {
+  color: black;
+}
+#cart #productParagraph {
+  color: black;
+}
 #cart p {
   text-align: center;
   font-size: 1em;
