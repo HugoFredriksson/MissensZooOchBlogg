@@ -140,6 +140,11 @@ footer {
   text-align: center;
   font-size: 2em;
 }
+#cart h3 {
+  font-size: 1em;
+  font-weight: normal;
+  text-align: center;
+}
 #cart #priceParagraph {
   color: black;
 }

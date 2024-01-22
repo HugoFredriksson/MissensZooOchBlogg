@@ -16,14 +16,27 @@ let errorCardNumber = document.getElementById("errorCardNumber");
 let errorDate = document.getElementById("errorDate");
 let errorCVV = document.getElementById("errorCVV");
 
-var spanBelowH2 = document.querySelector("h2 + span");
+let totalPrice;
+let displayTotalPrice;
 
-let bajs = "Kaka";
+JSON = [{
+    "id": 1,
+    "userId": 1, 
+    "productId": 1,
+    "quantity": 1,
+    "price": 100,
+    "productName": 'katt'
+},{
+    "id": 1,
+    "userId": 1, 
+    "productId": 4,
+    "quantity": 1,
+    "price": 999,
+    "productName": 'björnkiss'
+}]
 
 function init(){
-    createPriceParagraph();
-    createProductsParagraph();
-
+    allProducts();
     zipCodeInput.addEventListener("input", checkZip);
     cityInput.addEventListener("input", checkCity);
     addressInput.addEventListener("input", checkAddress);
@@ -36,20 +49,25 @@ function init(){
 
 window.onload = init;
 
-function createPriceParagraph(){
-    var priceParagraph = document.createElement("p");
-    priceParagraph.id = "priceParagraph";
-    priceParagraph.textContent = "Pris: ";
 
-    spanBelowH2.appendChild(priceParagraph);
-}
+function allProducts(){
+    let div = document.getElementsByTagName("div")[1];
+    totalPrice = 0;
+    for(let i = 0; i < JSON.length; i++){
+        let article = document.createElement("article");
+        let product = document.createElement("p");
+        product.innerHTML += "Produktnamn: "+  JSON[i].productName;
+        let price = document.createElement("p");
+        price.innerHTML = "Pris: " + JSON[i].price + " kr";
+        article.appendChild(price);
+        article.appendChild(product);
+        div.appendChild(article);
 
-function createProductsParagraph(){
-    var productParagraph = document.createElement("p");
-    productParagraph.id = "productParagraph";
-    productParagraph.textContent = "Produkter: ";
-
-    spanBelowH2.appendChild(productParagraph);
+        totalPrice += Number(JSON[i].price);
+        console.log(typeof(totalPrice) + totalPrice);
+        displayTotalPrice = document.getElementsByTagName("h3")[0];
+        displayTotalPrice.innerHTML = "Totala priset: " + totalPrice;
+    }
 }
 
 function checkZip(){

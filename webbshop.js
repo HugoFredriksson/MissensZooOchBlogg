@@ -58,6 +58,7 @@ function generateProducts() {
     rating.textContent = productInfo.rating + "⭐";
     p.textContent = productInfo.description;
         
+    let price;
          
     if (productInfo.onSale === 1) {
       const originalPrice = parseFloat(productInfo.price);
@@ -65,9 +66,13 @@ function generateProducts() {
       const salePrice = (originalPrice * (100 - salesPercentage)) / 100;
       button.textContent = "Köp " + salePrice.toFixed(2) + " SEK (Rabatt: " + productInfo.salesPercentage + "%, Originalpris " + originalPrice + " SEK )";
 
+      price = salesPrice;
+
       } else {
         button.textContent = "Köp " + productInfo.price + " SEK";
-      }
+        price = parseFloat(productInfo.price);
+    }
+
 
     article.appendChild(img);
     article.appendChild(h3);
@@ -78,4 +83,5 @@ function generateProducts() {
     productContainer.appendChild(article);
   });
 }
+
 
