@@ -14,7 +14,7 @@ let blogPostsArray;
 
 function init() {
     getBlogs();
-    
+    verify();
   }
   
   window.onload = init;
@@ -63,3 +63,15 @@ function generateBlogPosts() {
         blogContainer.appendChild(span);
     });
 }
+
+async function verify(){
+  let path = "https://localhost:7128/User/VerifyRole";
+  let response = await fetch(path, {
+    headers:{
+      "Authorization": localStorage.getItem("GUID")
+    }
+});
+let role = await response.text();
+console.log(role);
+}
+
