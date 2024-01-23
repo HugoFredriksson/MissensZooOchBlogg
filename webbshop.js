@@ -1,27 +1,11 @@
 let productsArray;
-
-/*
-const productsArray = [
-    {
-        id: 1,
-        description: "Håll dina tår varma med dessa gulliga kattstrumpor av hög kvalitet. En perfekt present till kattälskaren!",
-        name: "Kattstrumpor",
-        category: "Övrigt",
-        price: "99",
-        inStock: 5,
-        image: "image1.png",
-        portionPerDay: "1",
-        articleNumber: "1", 
-        rating: "2",
-        foodInfo: "Kcal: 140/100 gram",
-        onSale: false,
-        salePercentage: null
-    }
-  ];
-*/
+let productId;
+let clickedButton;
+let article;
 
 function init() {
   getProducts();
+  addEventListener("click", clickButton);
 }
 
 window.onload = init;
@@ -40,6 +24,7 @@ async function getProductsFetch(){
 
   let json = response.json();
   return json;
+
 }
 
 function generateProducts() {
@@ -57,22 +42,16 @@ function generateProducts() {
     h3.textContent = productInfo.name;
     rating.textContent = productInfo.rating + "⭐";
     p.textContent = productInfo.description;
-        
-    let price;
-         
+                 
     if (productInfo.onSale === 1) {
       const originalPrice = parseFloat(productInfo.price);
       const salesPercentage = parseFloat(productInfo.salesPercentage);
       const salePrice = (originalPrice * (100 - salesPercentage)) / 100;
       button.textContent = "Köp " + salePrice.toFixed(2) + " SEK (Rabatt: " + productInfo.salesPercentage + "%, Originalpris " + originalPrice + " SEK )";
 
-      price = salesPrice;
-
       } else {
         button.textContent = "Köp " + productInfo.price + " SEK";
-        price = parseFloat(productInfo.price);
     }
-
 
     article.appendChild(img);
     article.appendChild(h3);
@@ -84,4 +63,23 @@ function generateProducts() {
   });
 }
 
+function clickButton(event) {
+  clickedButton = event.target;
+  article = clickedButton.closest("article");
 
+  if (article && clickedButton.tagName === "BUTTON") {
+      let index = Array.from(article.parentElement.children).indexOf(article);
+      productId = productsArray[index].id;
+      let storedProducts = JSON.parse(sessionStorage.getItem("products")) || [];
+      storedProducts.push(productId);
+      sessionStorage.setItem("products", JSON.stringify(storedProducts));
+      console.log("Valda produktens id: ", productId);
+  }
+
+  getUserId();
+
+}
+
+function getUserId(){
+  fetch('http://localhost:7128');
+}

@@ -19,24 +19,11 @@ let errorCVV = document.getElementById("errorCVV");
 let totalPrice;
 let displayTotalPrice;
 
-JSON = [{
-    "id": 1,
-    "userId": 1, 
-    "productId": 1,
-    "quantity": 1,
-    "price": 100,
-    "productName": 'katt'
-},{
-    "id": 1,
-    "userId": 1, 
-    "productId": 4,
-    "quantity": 1,
-    "price": 999,
-    "productName": 'björnkiss'
-}]
+let storedProducts;
 
 function init(){
     allProducts();
+    getIdsFromSessionStorage();
     zipCodeInput.addEventListener("input", checkZip);
     cityInput.addEventListener("input", checkCity);
     addressInput.addEventListener("input", checkAddress);
@@ -68,6 +55,14 @@ function allProducts(){
         displayTotalPrice = document.getElementsByTagName("h3")[0];
         displayTotalPrice.innerHTML = "Totala priset: " + totalPrice;
     }
+}
+
+function getIdsFromSessionStorage(){
+    storedProducts = JSON.parse(sessionStorage.getItem("products"));
+
+    storedProducts.forEach(productId => {
+    console.log("Lagrat produkt-id: ", productId);
+    })
 }
 
 function checkZip(){
