@@ -11,7 +11,7 @@ function init() {
     if(localStorage.getItem("GUID") === "")
     {
         //Logga in
-        location.href= "account.html";
+        location.href= "index.html";
 
     }
 };

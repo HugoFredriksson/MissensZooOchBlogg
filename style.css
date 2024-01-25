@@ -1,6 +1,14 @@
+body {
+  background-color: rgb(235, 235, 235);
+  margin: 0;
+  width: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 main {
   grid-area: main;
-  background-color: rgb(255, 255, 255);
+  width: 100%;
+  background-color: rgb(235, 235, 235);
 }
 
 #LogIn {
@@ -10,24 +18,41 @@ main {
 header {
   display: grid;
   grid-area: header;
+  background-color: rgb(235, 235, 235);
 }
 header nav {
-  background-color: mediumaquamarine;
+  background-color: rgb(235, 235, 235);
+  width: 97vw;
 }
 header nav ul {
   display: grid;
-  grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  grid-template-columns: repeat(6, 1fr);
+  padding-right: 40px;
 }
 header nav ul li {
-  background-color: mediumaquamarine;
+  text-align: center;
+  background-color: rgb(23, 101, 2);
+  border: 1px solid #ddd;
   list-style: none;
 }
 header nav ul li a {
   text-decoration: none;
+  width: 100%;
+  height: 100%;
   color: white;
+  font-size: 2.5em;
 }
 header nav ul li img {
   height: 120px;
+}
+
+li:nth-child(2n) {
+  background-color: rgb(15, 152, 0);
+}
+
+li:hover {
+  background-color: rgb(0, 237, 0);
+  padding-top: 0;
 }
 
 .Home {
@@ -59,97 +84,92 @@ footer {
   height: 100px;
   display: grid;
   margin: 0;
-  grid-template-rows: 160px auto 30px;
+  grid-template-rows: auto auto 30px;
   grid-template-areas: "header" "main" "footer";
 }
 #index .wrapper .grid-container {
   height: 100%;
   display: grid;
-  grid-template-columns: 100px auto 100px;
+  background-color: rgb(235, 235, 235);
   grid-template-rows: auto;
   grid-template-areas: "Sidebar1  Options Options Options Options Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2" "Sidebar1  Products Products Products Products Sidebar2";
 }
 #index .wrapper .grid-container .Products {
   grid-area: Products;
-  background-color: rgb(255, 255, 255);
-  display: grid;
-  grid-template-columns: repeat(4, 0.5fr);
-  place-items: stretch;
   padding: 20px;
-  grid-gap: 20px;
+  display: grid;
+  text-align: center;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
 }
 #index .wrapper .grid-container .Products article {
   text-align: center;
-  border: 2px black solid;
-  padding-bottom: 10px;
+  font-size: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-#index .wrapper .grid-container .Products button:hover {
-  background-color: mediumaquamarine;
-  border: 1px solid rgb(170, 170, 170);
+#index .wrapper .grid-container .Products select {
+  font-size: 30px;
 }
-#index .wrapper .grid-container .Products img {
+#index .wrapper .grid-container .Products button {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 10px;
+  position: relative;
+  animation-name: buttonRainbow;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes buttonRainbow {
+  0% {
+    background-color: rgb(1, 173, 9);
+  }
+  50% {
+    background-color: rgb(24, 112, 0);
+  }
+  100% {
+    background-color: rgb(1, 173, 9);
+  }
+}
+#index .wrapper .grid-container .Products .Sidebar1, #index .wrapper .grid-container .Products .Sidebar2 {
+  width: 20vw;
+}
+#index .wrapper .grid-container button:hover {
+  background-color: rgb(160, 160, 160);
+}
+#index .wrapper .grid-container img {
   margin-top: 10px;
-  border: 2px solid black;
+  height: 300px;
 }
 #index .wrapper .grid-container .Options {
   grid-area: Options;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid black;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: auto auto;
 }
-
-#blog .grid-container {
-  grid-area: main;
-  padding-top: 10px;
-  display: grid;
-  grid-template-columns: 100px auto 100px;
-  grid-template-areas: "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2" "SidebarBlog1 Blog Blog Blog Blog SidebarBlog2";
+#blog main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#blog .blog {
-  grid-area: Blog;
-  display: grid;
-  grid-template-columns: repeat(1, 2fr);
-  grid-template-areas: "Blogtitle Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogimage Blogtext Blogtext Blogtext" "Blogtime Blogtext Blogtext Blogtext";
+#blog div {
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-#blog .blog #Blogtitle {
-  grid-area: Blogtitle;
-  background-color: cornflowerblue;
-}
-#blog .blog #Blogtext {
-  grid-area: Blogtext;
-  background-color: firebrick;
-}
-#blog .blog #Blogimage {
-  grid-area: Blogimage;
-  background-color: darkorchid;
-}
-#blog .blog #Blogtime {
-  grid-area: Blogtime;
-  background-color: green;
-}
-@media only screen and (max-width: 850px) {
-  #blog .grid-container {
-    background-color: red;
-    grid-template-areas: "Blogtitle" "Blogimage" "Blogtime" "Blogtext";
-  }
+#blog header nav ul {
+  grid-template-columns: repeat(6, 1fr);
+  padding-right: 40px;
 }
 
 #cart h2 {
   text-align: center;
   font-size: 2em;
-}
-#cart h3 {
-  font-size: 1em;
-  font-weight: normal;
-  text-align: center;
-}
-#cart #priceParagraph {
-  color: black;
-}
-#cart #productParagraph {
-  color: black;
 }
 #cart p {
   text-align: center;
@@ -175,9 +195,6 @@ footer {
   display: block;
   margin-bottom: 10px;
 }
-#cart span {
-  color: red;
-}
 #cart #submit-button {
   margin-top: 10px;
 }
@@ -188,4 +205,15 @@ footer {
 #CreateBlog main form #blogContent {
   width: 50vw;
   height: 50vh;
+}
+
+@media only screen and (max-width: 850px) {
+  header nav ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #index .grid-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas: "Options" "Options" "Options" "Options" "Products " "Products" "Products";
+  }
 }/*# sourceMappingURL=style.css.map */
