@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <script src="CreateBlog.js" defer></script>
     <title>Skapa Blogginlägg</title>
 </head>
 <body id="CreateBlog">
@@ -22,15 +22,19 @@
         <main>
             <h1>SKAPA BLOGG</h1>
 
-            <form>  
-                <label for="author">Användarnamn</label><br>
-                <input type="text" id="username"><br>
+            <form enctype="multipart/form-data">
                 <label for="title">Bloggens namn:</label><br>
-                <input type="text" id="blogName"><br><br>
-                <label for="blogContent">Blogginehåll</label><br>
-                <textarea id="blogContent"></textarea><br>
+                <input type="text" id="title"><br><br>
+                <label for="content">Blogginehåll</label><br>
+                <select id="category">
+                    <option value="foder">Foder</option>
+                    <option value="djur">Djur</option>
+                    <option value="övrigt">Övrigt</option>
+                </select>
+
+                <textarea id="content"></textarea><br>
                 <label>Bild - Valfritt</label><br><br>
-                <input type="file" name="hidden" class="file"><br><br>
+                <input type="file" name="image" class="file"><br><br>
                 <button id="submit-button">Skapa Blogginlägg</button>
             </form> 
         </main>

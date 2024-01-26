@@ -49,9 +49,9 @@ function generateBlogPosts() {
         const pName = document.createElement("p");
         
         h3.textContent = blogPost.title;
-        img.src = blogPost.image;
+        img.src = "images/" +blogPost.image;
         pTime.textContent = blogPost.timestamp;
-        pText.textContent = blogPost.blogContent;
+        pText.textContent = blogPost.content;
         pName.textContent = blogPost.username;
 
         span.appendChild(h3);
@@ -73,5 +73,20 @@ async function verify(){
 });
 let role = await response.text();
 console.log(role);
+}
+
+async function getUserId(){
+  await getUserIdFetch();
+}
+
+async function getUserIdFetch(){
+  let path = "https://localhost:7128/User/VerifyUserId";
+  let response = await fetch(path, {
+    headers:{
+      "Authorization": localStorage.getItem("GUID")
+    }
+  });
+  let userId = await response.text();
+  console.log(userId);
 }
 

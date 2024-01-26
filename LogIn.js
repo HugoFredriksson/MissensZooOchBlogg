@@ -17,6 +17,7 @@ function init() {
 };
 window.onload = init;
 
+
 async function logIn() {
     let email = form.elements.username.value;
     let password = form.elements.password.value;
@@ -32,8 +33,6 @@ async function logIn() {
 
     console.log(email, password);
 
-   // let status = await postFetch();
-
     if(response.status === 200){
         let key = await response.text();
         localStorage.setItem('GUID', key);
@@ -42,9 +41,4 @@ async function logIn() {
     } else{
         console.log("FEL ),:");
     }
-}
-
-
-async function postFetch(){
-    fetch
 }
