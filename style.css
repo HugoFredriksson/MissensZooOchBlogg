@@ -109,7 +109,7 @@ footer {
 #index .wrapper .grid-container .Products select {
   font-size: 30px;
 }
-#index .wrapper .grid-container .Products button {
+#index .wrapper .grid-container .Products #addProductToCartButton {
   background-color: black;
   color: white;
   font-size: 30px;
@@ -171,7 +171,6 @@ footer {
   font-size: 2em;
 }
 #cart p {
-  text-align: center;
   font-size: 1em;
 }
 #cart .container {
@@ -196,6 +195,11 @@ footer {
 }
 #cart #submit-button {
   margin-top: 10px;
+}
+#cart footer p {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
 }
 
 #CreateBlog main {

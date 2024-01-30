@@ -3,9 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="style.css" rel="stylesheet"></link>
+    <script src="removeBlog.js" defer></script>
+    <script src="removeUser.js" defer></script>
+    <script src="updateUserRole.js" defer></script>
+    <script src="changeProduct.js" defer></script>
+    <script src="addProduct.js" defer></script>
+    <title>Admin - Missens Zoo</title>
 </head>
-<body>
-    
+<body id="admin">
+    <div class="wrapper">
+        <header>
+            <nav>
+                <ul>
+                    <li><img src="logga.png" rel="Bild på Logga" href="index.html">
+                    <li><a class="Shop" href="index.html">Shop</a></li>    
+                    <li><a class="Blog" href="Blog.html">Blogg</a></li>
+                    <li><a class="CreateBlogg" href="CreateBlog.html">Skapa Blogg</a></li>
+                    <li><a class="Profil" href="profile.html">Profil</a></li>
+                    <li><a class="" href="LogOut.html">Logga Ut</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Admin</h1>
+
+            <h3>Lägg Till Produkt</h3>
+            <form id="form_addProduct">  
+                <label>Produktnamn:</label><br>
+                <input type="text" id="name"><br><br>
+                <label>Pris:</label><br>
+                <input type="number" min="1" id="price"><br><br>
+                <label>Lagerantal:</label><br>
+                <input type="number" min="1" id="stockCount"><br><br>
+                <label>Rea?</label><br>
+                <select id="productOnSale">
+                    <option value="0">Falskt</option>
+                    <option value="1">Sant</option>
+                </select><br><br>
+                <label>Reaprocent</label><br>
+                <input type="number" min="1" max="100" id="productOnSalePercentage"><br><br>
+                <label>Kategori</label><br>
+                <select id="productCategory">
+                    <option value="foder">Foder</option>
+                    <option value="djur">Djur</option>
+                    <option value="övrigt">Övrigt</option>
+                </select><br><br>
+                <label>Beskrivning</label><br>
+                <textarea id="productDescription"></textarea><br>
+                <label>Bild - Valfritt</label><br><br>
+                <input type="file" name="hidden" id="productImage" class="file"><br><br>
+                <button type="button" onclick="addProduct()">Skapa Produkt</button>
+            </form> 
+
+            <h3>Uppdatera Produkt</h3>
+            <form id="changeProductForm">  
+                <label for="title">ProduktId:</label><br>
+                <input type="text" id="productId" name="productId"><br><br>
+                <label>Produktnamn:</label><br>
+                <input type="text" id="productName" name="productName" required><br><br>
+                <label>Pris:</label><br>
+                <input type="number" min="1" id="productPrice"><br><br>
+                <label>Lagerantal:</label><br>
+                <input type="number" min="1" id="inStock"><br><br>
+                <label>Rea?</label><br>
+                <select id="onSale">
+                    <option id="0" value="0">Falskt</option>
+                    <option id="1" value="1">Sant</option>
+                </select><br><br>
+                <label>Reaprocent</label><br>
+                <input type="number" min="0" max="100" id="salesPercentage"><br><br>
+                <label>Kategori</label><br>
+                <select id="category">
+                    <option value="foder">Foder</option>
+                    <option value="djur">Djur</option>
+                    <option value="övrigt">Övrigt</option>
+                </select><br><br>
+                <label>Beskrivning</label><br>
+                <textarea id="description" required></textarea><br>
+                <label>Bild - Valfritt</label><br><br>
+                <input type="file" name="hidden" id="changeProductImage" class="file"><br><br>
+                <button type="button" onclick="changeProduct()">Updatera Produkt</button>
+            </form> 
+
+            <h3>Ta Bort Användare</h3>
+            <form id="removeUser">
+                <label for="userId">AnvändarId</label>
+                <input type="text" id="userId" name="userId" ><br><br>
+                <button type="button" onclick="removeUser()">Ta Bort Användare</button>
+            </form>
+
+            <h3>Ta Bort Blogginlägg</h3>
+            <form id="removeBlogForm">
+                <label for="blogId">Blog ID:</label>
+                <input type="text" id="blogId" name="blogId" required><br><br>
+                <button type="button" onclick="removeBlog()">Remove Blog</button>
+            </form>
+
+            <h3>Uppdatera Användarroll</h1>
+            <form>
+                <label for="userId">Användar ID:</label>
+                <input type="text" id="userIdRole" placeholder="Användar ID"><br>
+                <label for="newRole">Ny Roll:</label>
+                <select id="newRole">
+                    <option value="1">Gäst</option>
+                    <option value="2">Användare</option>
+                    <option value="3">Admin</option>
+                </select>
+                <button onclick="updateUserRole()">Update User Role</button>
+            </form>
+        </main>
+
+        <footer>
+            <p>Missens Zoo Och Blogg</p>
+        </footer>
+    </div>
 </body>
 </html>

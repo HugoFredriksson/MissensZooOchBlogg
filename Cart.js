@@ -1,3 +1,9 @@
+let allPrices = [];
+let totalPrice = 0;
+let badInput = false;
+
+// NEEDS INPUTFIELD FOR NAME AND CITY!!!!!!
+
 let zipCodeInput = document.getElementById("zipcode");
 let cityInput = document.getElementById("city");
 let addressInput = document.getElementById("address");
@@ -15,6 +21,15 @@ let errorEmail = document.getElementById("errorEmail");
 let errorCardNumber = document.getElementById("errorCardNumber");
 let errorDate = document.getElementById("errorDate");
 let errorCVV = document.getElementById("errorCVV");
+let cartProducts;
+let cartInfo;
+
+
+let priceDiv = document.getElementsByTagName("div")[1];
+let productDiv = document.getElementsByTagName("div")[2];
+
+let form;
+let userId;
 
 function init(){
     zipCodeInput.addEventListener("input", checkZip);
@@ -25,9 +40,155 @@ function init(){
     cardnumberInput.addEventListener("input", checkCardNumber);
     dateInput.addEventListener("input", checkDate);
     cvvInput.addEventListener("input", checkCVV);
+
+    createCartProducts();
+    getUserIdFetch();
+    form = document.querySelector("form");
+    form.addEventListener("submit", event => {
+        checkInputFields();
+        if(badInput === false){
+            console.log("input fields are correct!");
+            createOrder();
+            event.preventDefault();
+        } else{
+            console.log("input fields are incorrect! ): ");
+        }
+    })
+}
+window.onload = init;
+
+
+
+async function productsFetch(){
+    cartProducts = await getProductsFetch();
+    console.log(cartProducts);
+
+    cartProducts.forEach(cartInfo =>{
+        const article = document.createElement("article");
+        productDiv.appendChild(article);
+        const p = document.createElement("p");
+
+        const totalPricePerProduct = cartInfo.price * cartInfo.quantity;
+        allPrices.push(totalPricePerProduct);
+
+        p.textContent = cartInfo.name + " " + " x " + cartInfo.quantity + " toalt " + totalPricePerProduct + " SEK";
+        article.appendChild(p);
+    });
+    const article = document.createElement("article");
+    priceDiv.appendChild(article);
+    const p = document.createElement("p");
+
+    calculateTotalPrice(allPrices);
+
+    p.textContent = "Ditt totala pris är: " + totalPrice;
+    article.appendChild(p);
 }
 
-window.onload = init;
+function calculateTotalPrice(allPrices){
+    totalPrice = 0;
+    console.log(allPrices);
+    allPrices.forEach(each => {
+        totalPrice+=each;
+    });
+    console.log(totalPrice);
+    return totalPrice;
+}
+
+function createCartProducts(){
+    productsFetch();
+}
+
+function checkInputFields(){
+    checkZip();
+    checkCity();
+    checkAddress();
+    checkPhoneNumber();
+    checkEmail();
+    checkCardNumber();
+    checkDate();
+    checkCVV();
+    return badInput;
+}
+
+async function getProductsFetch(){
+    let path = "https://localhost:7128/Cart/ViewCart";
+    let response = await fetch(path, {
+        method: "GET",
+        mode: "cors",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization": localStorage.getItem("GUID")
+        }
+    });
+    console.log(response);
+    cartProducts = response.json();
+    return cartProducts;
+}
+
+async function getUserIdFetch(){
+    let path = "https://localhost:7128/User/VerifyUserId";
+    let response = await fetch(path, {
+      headers:{
+        "Authorization": localStorage.getItem("GUID")
+      }
+    });
+    userId = await response.text();
+    console.log(userId);
+    return Number(userId);
+}
+
+async function createOrder(){
+    await getUserIdFetch();
+    console.log(allPrices);
+    calculateTotalPrice(allPrices);
+
+    let phonenumber = phonenumberInput.value;
+    
+    let zipcode = zipCodeInput.value;
+
+    let country = "SWEDEN";
+
+    let city = cityInput.value;
+
+    let adress = addressInput.value;
+
+    let recipientName = "david";
+
+    console.log("JSON " + userId);
+    console.log("JSON " + phonenumber);
+    console.log("JSON " + zipcode);
+    console.log("JSON " + country);
+    console.log("JSON " + city);
+    console.log("JSON " + adress);
+    console.log("JSON " + recipientName);
+    console.log("JSON " + totalPrice);
+
+    let JSON = ({
+        "userId": userId,
+        "orderPrice":totalPrice,
+        "phonenumber": phonenumber,
+        "zipcode":zipcode,
+        "country":country,
+        "city":city,
+        "adress":adress,
+        "recipientName":recipientName
+    });    
+    console.log(JSON);
+    postOrder(JSON);
+}
+
+async function postOrder(json){
+    let path = "https://localhost:7128/Order/CreateOrder";
+    let response = await fetch(path, {
+        method: "POST",
+        mode: "cors",
+        headers:{
+            "Content-Type":"application/json",
+            "Authorization": localStorage.getItem("GUID")
+        },
+        body: JSON.stringify(json)
+    });
+}
 
 function checkZip(){
     let zipCodeValue = zipCodeInput.value.trim();
@@ -38,11 +199,13 @@ function checkZip(){
         zipCodeInput.style.backgroundColor = "#90EE90"
         errorZip.innerHTML = " ";
 
-      }else {
+    }else {
         console.log("Postnummret är i inkorrekt format!");
         zipCodeInput.style.backgroundColor = "#FFCCCB"
         errorZip.innerHTML = "Postnummret är i fel format!";
-      }
+        badInput = true;
+        return badInput
+    }
 }
 
 function checkCity(){
@@ -54,11 +217,13 @@ function checkCity(){
         cityInput.style.backgroundColor = "#90EE90"
         errorCity.innerHTML = " ";
 
-      }else {
+    }else {
         console.log("Orten är ogiltlig!");
         cityInput.style.backgroundColor = "#FFCCCB"
         errorCity.innerHTML = "Orten är ogiltlig!";
-      }
+        badInput = true;
+        return badInput
+    }
 }
 
 function checkAddress(){
@@ -70,11 +235,13 @@ function checkAddress(){
         addressInput.style.backgroundColor = "#90EE90"
         errorAddress.innerHTML = " ";
 
-      }else {
+    }else {
         console.log("Adressen är ogiltlig!");
         addressInput.style.backgroundColor = "#FFCCCB"
         errorAddress.innerHTML = "Adressen är ogiltlig!";
-      }
+        badInput = true;
+        return badInput
+    }
 }
 
 function checkPhoneNumber() {
@@ -89,6 +256,8 @@ function checkPhoneNumber() {
         console.log("Telefonnumret är ogiltig!");
         phonenumberInput.style.backgroundColor = "#FFCCCB";
         errorPhoneNumber.innerHTML = "Telefonnumret är ogiltig!";
+        badInput = true;
+        return badInput
     }
 }
 
@@ -102,6 +271,8 @@ function checkEmail(){
     } else{
         emailInput.style.backgroundColor = "#FFCCCB";
         errorEmail.innerHTML = "Epostadressen är i felaktigt format!";
+        badInput = true;
+        return badInput
     }
 }
 
@@ -115,6 +286,8 @@ function checkCardNumber(){
     } else{
         cardnumberInput.style.backgroundColor = "#FFCCCB";
         errorCardNumber.innerHTML = "Kortnumret stämmer inte!";
+        badInput = true;
+        return badInput
     }
 }
 
@@ -128,6 +301,8 @@ function checkDate(){
     } else{
         dateInput.style.backgroundColor = "#FFCCCB";
         errorDate.innerHTML = "Månaden är i felaktigt format!";
+        badInput = true;
+        return badInput
     }
 }
 
@@ -141,5 +316,7 @@ function checkCVV(){
     } else{
         cvvInput.style.backgroundColor = "#FFCCCB";
         errorCVV.innerHTML = "CVV-koden är felaktig!";
+        badInput = true;
+        return badInput
     }
 }
