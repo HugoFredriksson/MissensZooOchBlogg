@@ -1,5 +1,17 @@
 let productsArray;
 let button = document.getElementsByTagName("button");
+
+let categoryButtonFeed = document.getElementById("feed");
+let categoryButtonAnimal = document.getElementById("animal");
+let categoryButtonMiscellaneous = document.getElementById("miscellaneous");
+let categoryButtonDogs = document.getElementById("dog");
+let categoryButtonCats = document.getElementById("cat");
+let categoryButtonBirds = document.getElementById("bird");
+let categoryButtonFish = document.getElementById("fish");
+let categoryButtonTransport = document.getElementById("transport");
+let categoryButtonBeautyProducts = document.getElementById("beautyProduct");
+let categoryButtonBowls = document.getElementById("bowl");
+
 let role;
 let productCount;
 let customNumberInput;
@@ -8,41 +20,19 @@ let userId;
 let productId;
 let quantity;
 let price;
-
-/*
-const productsArray = [
-    {
-        id: 1,
-        description: "Håll dina tår varma med dessa gulliga kattstrumpor av hög kvalitet. En perfekt present till kattälskaren!",
-        name: "Kattstrumpor",
-        category: "Övrigt",
-        price: "99",
-        inStock: 5,
-        image: "image1.png",
-        portionPerDay: "1",
-        articleNumber: "1", 
-        rating: "2",
-        foodInfo: "Kcal: 140/100 gram",
-        onSale: false,
-        salePercentage: null
-    }
-  ];
-*/
+let category;
 
 ///////////////////////////////////////////////////////////////////////
 function init() {
+
   getProducts();
   verify();
   getUserId();
+  declareCategoryEventListeners();
 }
 ////////////////////////////////////////////////////////////////////////
 window.onload = init;
 
-async function getProducts(){
-  productsArray = await getProductsFetch();
-  console.log(productsArray);
-  generateProducts();
-}
 
 
 async function getUserId(){
@@ -60,7 +50,68 @@ async function getUserIdFetch(){
   console.log(userId);
 }
 
-function generateProducts() {
+function declareCategoryEventListeners(){
+  categoryButtonFeed.addEventListener("click", event =>{
+    console.log("Sorterar efter foder");
+    category = "Foder";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonAnimal.addEventListener("click", event => {
+    console.log("Sorterar efter alla djur");
+    sortProductsAllAnimals();
+  })
+
+  categoryButtonMiscellaneous.addEventListener("click", event =>{
+    console.log("Sorterar efter övriga produkter");
+    category = "Övrigt";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonDogs.addEventListener("click", event =>{
+    console.log("Sorterar efter hundar");
+    category = "Hund";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonCats.addEventListener("click", event =>{
+    console.log("Sorterar efter katter");
+    category = "Katt";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonBirds.addEventListener("click", event =>{
+    console.log("Sorterar efter fåglar");
+    category = "Fågel";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonFish.addEventListener("click", event =>{
+    console.log("Sorterar efter fiskar");
+    category = "Fisk";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonTransport.addEventListener("click", event =>{
+    console.log("Sorterar efter transportmedel");
+    category = "Transportmedel";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonBeautyProducts.addEventListener("click", event => {
+    console.log("Sorterar efter skönhetsprodukter");
+    category = "Skönhetsprodukt";
+    sortProductsByCategory(category);
+  })
+
+  categoryButtonBowls.addEventListener("click", event => {
+    console.log("Sorterar efter skålar");
+    category = "Skål";
+    sortProductsByCategory(category);
+  })
+}
+
+function generateProducts() { 
   const productContainer = document.getElementById("productContainer");
   console.log(productsArray);
   productsArray.forEach(productInfo => {
@@ -73,6 +124,7 @@ function generateProducts() {
     productCount = document.createElement("option")
 
     const button = document.createElement("button");
+
     button.id = productInfo.id;
 
     //Button for incrementing count of products to buy
@@ -106,7 +158,6 @@ function generateProducts() {
     }
     
 
-
     article.appendChild(img);
     article.appendChild(h3);
     article.appendChild(rating);
@@ -134,6 +185,8 @@ function generateProducts() {
       decrementValue(productInfo);
     })
 
+   
+
     productContainer.appendChild(article);
   });
 }
@@ -152,6 +205,7 @@ function decrementValue(productInfo){
   input.stepDown();
 }
 
+//Connected to add To cart function
 function clickButton(productInfo) {
   getUserId();
   if(role === 0){
@@ -166,7 +220,7 @@ function clickButton(productInfo) {
   }
 }
 
-
+//Calculates the sale price
 function calculateSale(productInfo){
 
   if (productInfo.onSale === 1) {
@@ -244,6 +298,12 @@ async function verify(){
   console.log(role);
 }
 
+async function getProducts(){
+  productsArray = await getProductsFetch();
+  console.log(productsArray);
+  generateProducts();
+}
+
 async function getProductsFetch(){
   const path = "https://localhost:7128/Product/ViewAllProducts";
 
@@ -254,15 +314,47 @@ async function getProductsFetch(){
   return json;
 }
 
-async function postBlogContent(json){
-  let path = "https://localhost:7128/Blog/CreateBlog";
-  let response = await fetch(path, {
-      method: "POST",
-      mode: "cors",
-      headers:{
-          "Content-Type":"application/json",
-          "Authorization": localStorage.getItem("GUID")
-      },
-      body: JSON.stringify(json)
+async function sortProductsByCategory(category){
+  productsArray = [];
+  productsArray = await sortProductsByCategoryFetch(category);
+  console.log(productsArray);
+  deleteAllProducts();
+  generateProducts();
+}
+
+async function sortProductsByCategoryFetch(category){
+  const path = "https://localhost:7128/Product/SortProductsByCategory/" + category;
+
+  let response = await fetch(path);
+  console.log("response: " + response);
+  productsArray = response.json();
+  console.log(productsArray);
+  return productsArray;
+
+}
+
+async function sortProductsAllAnimals(){
+  productsArray = [];
+  productsArray = await sortProductsAllAnimalsFetch();
+  console.log(productsArray);
+  deleteAllProducts();
+  generateProducts();
+}
+
+async function sortProductsAllAnimalsFetch(){
+  const path = "https://localhost:7128/Product/SortProductsCategoryAllAnimals";
+  let response = await fetch(path);
+  productsArray = response.json();
+  console.log(productsArray);
+  return productsArray;
+}
+
+
+function deleteAllProducts(){
+  const articles = Array.from(document.getElementsByTagName('article'));
+  console.log(articles);
+
+  articles.forEach(article => {
+    article.remove();
   });
 }

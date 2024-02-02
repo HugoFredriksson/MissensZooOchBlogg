@@ -150,6 +150,14 @@ footer {
   text-align: center;
   display: grid;
   grid-template-columns: auto auto;
+  gap: 25px;
+}
+#index .wrapper .grid-container .Options a {
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 #blog main {
   display: flex;
@@ -166,18 +174,32 @@ footer {
   padding-right: 40px;
 }
 
+#cart main {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-top: 100px;
+}
+#cart main .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  padding-top: 250px;
+  border: 2px solid #d1d1d1;
+}
+#cart main .container span {
+  color: red;
+}
+#cart main .cartContainer {
+  border: 2px solid #d1d1d1;
+}
 #cart h2 {
   text-align: center;
   font-size: 2em;
 }
 #cart p {
   font-size: 1em;
-}
-#cart .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
+  text-align: center;
 }
 #cart form {
   display: flex;
@@ -188,6 +210,9 @@ footer {
 #cart .form-column {
   flex: 1;
   margin-right: 20px;
+}
+#cart span {
+  font-weight: bold;
 }
 #cart label, #cart input {
   display: block;

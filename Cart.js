@@ -4,6 +4,8 @@ let badInput = false;
 
 // NEEDS INPUTFIELD FOR NAME AND CITY!!!!!!
 
+let recipientNameInput = document.getElementById("recipientName");
+let countryInput = document.getElementById("country");
 let zipCodeInput = document.getElementById("zipcode");
 let cityInput = document.getElementById("city");
 let addressInput = document.getElementById("address");
@@ -13,6 +15,8 @@ let cardnumberInput = document.getElementById("cardnumber");
 let dateInput = document.getElementById("date");
 let cvvInput = document.getElementById("cvv");
 
+let errorRecipientName = document.getElementById("errorRecipientName");
+let errorCountry = document.getElementById("errorCountry");
 let errorZip = document.getElementById("errorZip");
 let errorCity = document.getElementById("errorCity");
 let errorAddress = document.getElementById("errorAddress");
@@ -27,11 +31,15 @@ let cartInfo;
 
 let priceDiv = document.getElementsByTagName("div")[1];
 let productDiv = document.getElementsByTagName("div")[2];
+let formDiv = document.getElementsByTagName("form")[0];
 
 let form;
 let userId;
 
 function init(){
+
+    recipientNameInput.addEventListener("input", checkRecipientName);
+    countryInput.addEventListener("input", checkCountry);
     zipCodeInput.addEventListener("input", checkZip);
     cityInput.addEventListener("input", checkCity);
     addressInput.addEventListener("input", checkAddress);
@@ -42,17 +50,25 @@ function init(){
     cvvInput.addEventListener("input", checkCVV);
 
     createCartProducts();
+
+
+
     getUserIdFetch();
     form = document.querySelector("form");
+
     form.addEventListener("submit", event => {
         checkInputFields();
+
         if(badInput === false){
             console.log("input fields are correct!");
             createOrder();
             event.preventDefault();
         } else{
             console.log("input fields are incorrect! ): ");
+            badInput = false;
+            event.preventDefault();
         }
+        event.preventDefault();
     })
 }
 window.onload = init;
@@ -71,7 +87,7 @@ async function productsFetch(){
         const totalPricePerProduct = cartInfo.price * cartInfo.quantity;
         allPrices.push(totalPricePerProduct);
 
-        p.textContent = cartInfo.name + " " + " x " + cartInfo.quantity + " toalt " + totalPricePerProduct + " SEK";
+        p.textContent = cartInfo.name + " " + " x " + cartInfo.quantity + " totalt " + totalPricePerProduct + " SEK";
         article.appendChild(p);
     });
     const article = document.createElement("article");
@@ -82,6 +98,10 @@ async function productsFetch(){
 
     p.textContent = "Ditt totala pris är: " + totalPrice;
     article.appendChild(p);
+
+    if(cartProducts.length === 0){
+        formDiv.style.visibility = "hidden";
+    }
 }
 
 function calculateTotalPrice(allPrices){
@@ -99,14 +119,68 @@ function createCartProducts(){
 }
 
 function checkInputFields(){
+    checkRecipientName();
+    console.log(badInput);
+    if(badInput === true){
+        
+        console.log("Check recipientName är i falskt format!");
+        return badInput;
+    }
+
+    checkCountry();
+    console.log(badInput);
+    if(badInput === true){
+        console.log("Check country är i falskt format!");
+        return badInput;
+    }
+    
     checkZip();
+    if(badInput === true){
+        console.log("Check zip är i falskt format!");
+        return badInput;
+    }
+
     checkCity();
+    if(badInput === true){
+        console.log("Check city är i falskt format!");
+        return badInput;
+    }
+
     checkAddress();
+    if(badInput === true){
+        console.log("Check Adress är i falskt format!");
+        return badInput;
+    }
+
     checkPhoneNumber();
+    if(badInput === true){
+        console.log("Check phonenumber är i falskt format!");
+        return badInput;
+    }
+
     checkEmail();
+    if(badInput === true){
+        console.log("Check email är i falskt format!");
+        return badInput;
+    }
+
     checkCardNumber();
+    if(badInput === true){
+        console.log("Check cardnumber är i falskt format!");
+        return badInput;
+    }
+
     checkDate();
+    if(badInput === true){
+        console.log("Check date är i falskt format!");
+        return badInput;
+    }
+
     checkCVV();
+    if(badInput === true){
+        console.log("Check CVV är i falskt format!");
+        return badInput;
+    }
     return badInput;
 }
 
@@ -146,13 +220,13 @@ async function createOrder(){
     
     let zipcode = zipCodeInput.value;
 
-    let country = "SWEDEN";
+    let country = countryInput.value;
 
     let city = cityInput.value;
 
     let adress = addressInput.value;
 
-    let recipientName = "david";
+    let recipientName = recipientNameInput.value;
 
     console.log("JSON " + userId);
     console.log("JSON " + phonenumber);
@@ -175,6 +249,7 @@ async function createOrder(){
     });    
     console.log(JSON);
     postOrder(JSON);
+    //window.location.href="Cart.html";
 }
 
 async function postOrder(json){
@@ -190,19 +265,58 @@ async function postOrder(json){
     });
 }
 
+function checkRecipientName(){
+    let recipientNameValue = recipientNameInput.value.trim();
+    let recipientNameRegex = /^[a-zåäöA-ZÅÄÖ]{1,30}\s[a-zåäöA-ZÅÄÖ]{1,50}$/;
+
+    if(recipientNameRegex.test(recipientNameValue)){
+        console.log("Namnet är i korrekt format!");
+        recipientNameInput.style.backgroundColor = "#90EE90";
+        errorRecipientName.innerHTML = " ";
+        badInput = false;
+        
+    }else {
+        console.log("Namnet är i felaktigt format!");
+        recipientNameInput.style.backgroundColor = "#FFCCCB";
+        errorRecipientName.innerHTML = "Namnet är i inkorrekt format!";
+        badInput = true;
+        return badInput;
+    }
+}
+
+function checkCountry(){
+    let countryValue = countryInput.value.trim();
+    let countryRegex = /^[a-zåäöA-ZÅÄÖ]{1,25}(\s)?[a-zåäöA-ZÅÄÖ]{1,25}$/
+
+    if (countryRegex.test(countryValue)) {
+        console.log("Landet är i korrekt format!");
+        countryInput.style.backgroundColor = "#90EE90";
+        errorCountry.innerHTML = " ";
+        badInput = false;
+
+    }else {
+        console.log("Landet är i inkorrekt format!");
+        countryInput.style.backgroundColor = "#FFCCCB";
+        errorCountry.innerHTML = "Landet är i inkorrekt format!";
+        badInput = true;
+        return badInput
+    }
+}
+
 function checkZip(){
     let zipCodeValue = zipCodeInput.value.trim();
     let zipCodeRegex = /^\d{5}$|^\d{3}\s\d{2}$/;
 
     if (zipCodeRegex.test(zipCodeValue)) {
-        console.log("Postnummret stämmer!");
-        zipCodeInput.style.backgroundColor = "#90EE90"
+        console.log("Postnummret är giltigt!");
+        zipCodeInput.style.backgroundColor = "#90EE90";
         errorZip.innerHTML = " ";
+        badInput = false;
 
     }else {
         console.log("Postnummret är i inkorrekt format!");
-        zipCodeInput.style.backgroundColor = "#FFCCCB"
-        errorZip.innerHTML = "Postnummret är i fel format!";
+        zipCodeInput.style.backgroundColor = "#FFCCCB";
+        errorZip.innerHTML = "Postnummret är ogiltigt!";
         badInput = true;
         return badInput
     }
@@ -216,11 +330,12 @@ function checkCity(){
         console.log("Orten stämmer!");
         cityInput.style.backgroundColor = "#90EE90"
         errorCity.innerHTML = " ";
+        badInput = false;
 
     }else {
         console.log("Orten är ogiltlig!");
         cityInput.style.backgroundColor = "#FFCCCB"
-        errorCity.innerHTML = "Orten är ogiltlig!";
+        errorCity.innerHTML = "Orten är i inkorrekt format!";
         badInput = true;
         return badInput
     }
@@ -234,11 +349,12 @@ function checkAddress(){
         console.log("Adressen stämmer!");
         addressInput.style.backgroundColor = "#90EE90"
         errorAddress.innerHTML = " ";
+        badInput = false;
 
     }else {
         console.log("Adressen är ogiltlig!");
         addressInput.style.backgroundColor = "#FFCCCB"
-        errorAddress.innerHTML = "Adressen är ogiltlig!";
+        errorAddress.innerHTML = "Adressen är i inkorrekt format!";
         badInput = true;
         return badInput
     }
@@ -252,6 +368,8 @@ function checkPhoneNumber() {
         console.log("Telefonnumret stämmer!");
         phonenumberInput.style.backgroundColor = "#90EE90";
         errorPhoneNumber.innerHTML = " ";
+        badInput = false;
+
     } else {
         console.log("Telefonnumret är ogiltig!");
         phonenumberInput.style.backgroundColor = "#FFCCCB";
@@ -266,11 +384,14 @@ function checkEmail(){
     let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if(emailRegex.test(emailValue)){
+        console.log("Epostadressen är i korrekt format");
         emailInput.style.backgroundColor = "#90EE90";
         errorEmail.innerHTML = " ";
+        badInput = false;
+
     } else{
         emailInput.style.backgroundColor = "#FFCCCB";
-        errorEmail.innerHTML = "Epostadressen är i felaktigt format!";
+        errorEmail.innerHTML = "Epostadressen är i inkorrekt format!";
         badInput = true;
         return badInput
     }
@@ -281,8 +402,11 @@ function checkCardNumber(){
     let cardnumberRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])?[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/;
 
     if(cardnumberRegex.test(cardnumberValue)){
+        console.log("Kortnummret stämmer");
         cardnumberInput.style.backgroundColor = "#90EE90";
         errorCardNumber.innerHTML = " ";
+        badInput = false;
+
     } else{
         cardnumberInput.style.backgroundColor = "#FFCCCB";
         errorCardNumber.innerHTML = "Kortnumret stämmer inte!";
@@ -296,8 +420,11 @@ function checkDate(){
     let dateRegex = /^(0[1-9]|1[0-2])\/(1[9-9]|2[0-9])$/;
 
     if(dateRegex.test(dateValue)){
+        console.log("Månaden är i korrekt format");
         dateInput.style.backgroundColor = "#90EE90";
         errorDate.innerHTML = " ";
+        badInput = false;
+
     } else{
         dateInput.style.backgroundColor = "#FFCCCB";
         errorDate.innerHTML = "Månaden är i felaktigt format!";
@@ -311,8 +438,11 @@ function checkCVV(){
     let cvvRegex = /^[0-9]{3}$/;
 
     if(cvvRegex.test(cvvValue)){
+        console.log("CVV-koden är i korrekt format");
         cvvInput.style.backgroundColor = "#90EE90";
         errorCVV.innerHTML = " ";
+        badInput = false;
+
     } else{
         cvvInput.style.backgroundColor = "#FFCCCB";
         errorCVV.innerHTML = "CVV-koden är felaktig!";

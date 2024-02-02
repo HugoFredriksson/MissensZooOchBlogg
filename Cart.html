@@ -24,15 +24,24 @@
 
 
         <main>
+          <span class="cartContainer">
             <h2>Kundvagn</h2>
             <p>Pris: </p>
             <div></div>
             <p>Dina produkter:</p>
             <div></div>
+          </span>
 
             <div class="container">
-              <form action="/action_page.php">
-                <div class="form-column">
+              <form>
+                  <label for="recipientName">Förnamn och Efternamn:</label>
+                  <input type="text" name="recipientName" id="recipientName">
+                  <span id="errorRecipientName"></span>
+
+                  <label for="country">Land:</label>
+                  <input type="text" name="country" id="country">
+                  <span id="errorCountry"></span>
+
                   <label for="zip">Postnummer:</label>
                   <input type="text" name="zip" id="zipcode">
                   <span id="errorZip"></span>
@@ -52,9 +61,7 @@
                   <label for="email">Email:</label>
                   <input type="email" name="email" id="email">
                   <span id="errorEmail"></span>
-                </div>
-          
-                <div class="form-column">
+
                   <label for="cardnumber">Kortnummer:</label>
                   <input type="text" name="cardnumber" id="cardnumber">
                   <span id="errorCardNumber"></span>
@@ -68,7 +75,6 @@
                   <span id="errorCVV"></span>
                   
                   <button id="submit-button">Bekräfta Köp</button>
-                </div>
               </form>
             </div>
         </main>
