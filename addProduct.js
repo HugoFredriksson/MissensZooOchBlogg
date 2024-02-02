@@ -1,5 +1,5 @@
 function init() {
-    addProduct()
+    
 }
 window.onload = init;
 
@@ -35,6 +35,7 @@ function addProduct() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("GUID")
         },
         body: JSON.stringify(data),
     })

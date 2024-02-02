@@ -43,12 +43,20 @@
                     <option value="1">Sant</option>
                 </select><br><br>
                 <label>Reaprocent</label><br>
-                <input type="number" min="1" max="100" id="productOnSalePercentage"><br><br>
+                <input type="number" min="0" max="100" id="productOnSalePercentage"><br><br>
                 <label>Kategori</label><br>
                 <select id="productCategory">
-                    <option value="foder">Foder</option>
-                    <option value="djur">Djur</option>
+                    <option value="Katt">Katt</option>
+                    <option value="Hund">Hund</option>
+                    <option value="Fågel">Fågel</option>
+                    <option value="Fiskar">Fiskar</option>
+                    <option value="Mat">Mat</option>
+                    <option value="Godis">Godis</option>
+                    <option value="Leksaker">Leksaker</option>
+                    <option value="Matskålar">Matskålar</option>
+                    <option value="Transportmedel">Transportmedel</option>
                     <option value="övrigt">Övrigt</option>
+
                 </select><br><br>
                 <label>Beskrivning</label><br>
                 <textarea id="productDescription"></textarea><br>
@@ -60,7 +68,7 @@
             <h3>Uppdatera Produkt</h3>
             <form id="changeProductForm">  
                 <label for="title">ProduktId:</label><br>
-                <input type="text" id="productId" name="productId"><br><br>
+                <input type="number" id="productId" name="productId"><br><br>
                 <label>Produktnamn:</label><br>
                 <input type="text" id="productName" name="productName" required><br><br>
                 <label>Pris:</label><br>
@@ -76,9 +84,16 @@
                 <input type="number" min="0" max="100" id="salesPercentage"><br><br>
                 <label>Kategori</label><br>
                 <select id="category">
-                    <option value="foder">Foder</option>
-                    <option value="djur">Djur</option>
-                    <option value="övrigt">Övrigt</option>
+                    <option value="Katt">Katt</option>
+                    <option value="Hund">Hund</option>
+                    <option value="Fågel">Fågel</option>
+                    <option value="Fiskar">Fiskar</option>
+                    <option value="Mat">Mat</option>
+                    <option value="Godis">Godis</option>
+                    <option value="Leksaker">Leksaker</option>
+                    <option value="Matskålar">Matskålar</option>
+                    <option value="Transportmedel">Transportmedel</option>
+                    <option value="Övrigt">Övrigt</option>
                 </select><br><br>
                 <label>Beskrivning</label><br>
                 <textarea id="description" required></textarea><br>

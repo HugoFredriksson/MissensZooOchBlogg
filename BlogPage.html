@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    
-    <title>Profil - Webbshop</title>
+    <script src="BlogPage.js" defer></script>
+    <title>Blogg - Missens Zoo</title>
 </head>
-<body id="index">
+<body id="BlogPage">
     <div class="wrapper">
         <header>
             <nav>
@@ -15,15 +15,30 @@
                     <li><img src="logga.png" rel="Bild på Logga" href="index.html">
                     <li><a class="Shop" href="index.html">Shop</a></li>    
                     <li><a class="Blog" href="Blog.html">Blogg</a></li>
-                    <li><a href="ChangePassword.html">Ändra Lösenord</a></li>
-                    <li><a class="Cart" href="Cart.html">Kundvagn 🛒</a></li>
+                    <li><a class="CreateBlogg" href="CreateBlog.html">Skapa Blogg</a></li>
+                    <li><a class="Profil" href="profile.html">Profil</a></li>
                     <li><a class="" href="LogOut.html">Logga Ut</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
-            <p>PROFIL </p>
+            <div class="grid-container">
+            
+                <section class="SidebarBlog1"></section>
+                
+                <span class="blog" id="blogpost">
+                   <a href="Blog.html">Tillbaka ↩</a>
+                </span>
+                <span id="comments">
+                    <h3>Kommentarer:</h3>
+                </span>
+                    
+                <section class="SidebarBlog2"></section>
+                    
+            </div>
+
+            
         </main>
 
         <footer>

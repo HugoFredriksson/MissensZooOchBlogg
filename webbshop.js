@@ -55,6 +55,7 @@ function declareCategoryEventListeners(){
     console.log("Sorterar efter foder");
     category = "Foder";
     sortProductsByCategory(category);
+    
   })
 
   categoryButtonAnimal.addEventListener("click", event => {
@@ -202,7 +203,10 @@ function decrementValue(productInfo){
   console.log("-");
   console.log(productInfo.id);
   var input = document.getElementById(productInfo.id);
-  input.stepDown();
+  if(input.value > 1){
+    input.stepDown();
+  }
+  
 }
 
 //Connected to add To cart function
@@ -315,6 +319,7 @@ async function getProductsFetch(){
 }
 
 async function sortProductsByCategory(category){
+  console.clear();
   productsArray = [];
   productsArray = await sortProductsByCategoryFetch(category);
   console.log(productsArray);
@@ -334,6 +339,7 @@ async function sortProductsByCategoryFetch(category){
 }
 
 async function sortProductsAllAnimals(){
+  console.clear();
   productsArray = [];
   productsArray = await sortProductsAllAnimalsFetch();
   console.log(productsArray);

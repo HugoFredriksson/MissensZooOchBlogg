@@ -14,12 +14,13 @@ function updateUserRole() {
 
     console.log(userId);
     console.log(newRole);
-
-
+    
+    
     fetch('https://localhost:7128/User/UpdateUserRole', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            "Authorization": localStorage.getItem("GUID")
         },
         body: JSON.stringify(user),
     })
