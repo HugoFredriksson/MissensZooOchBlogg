@@ -116,12 +116,12 @@ function generateProducts() {
   const productContainer = document.getElementById("productContainer");
   console.log(productsArray);
   productsArray.forEach(productInfo => {
-    const article = document.createElement("article");
-    const img = document.createElement("img");
-    const h3 = document.createElement("h3");
-    const rating = document.createElement("p");
-    const stock = document.createElement("p");
-    const p = document.createElement("p");
+    const article = document.createElement("article"); //Container for product
+    const img = document.createElement("img"); //product
+    const h3 = document.createElement("h3"); //name of product
+    const rating = document.createElement("p"); //rating
+    const stock = document.createElement("p"); //number of products in stock
+    const p = document.createElement("p"); //description 
     productCount = document.createElement("option")
 
     const button = document.createElement("button");
@@ -166,14 +166,19 @@ function generateProducts() {
     article.appendChild(p);
     article.appendChild(customNumberInput);
     article.appendChild(productCount);
+
+    article.appendChild(increment);
+    article.appendChild(decrement);
+
     article.appendChild(button);
+
+    
+
 
     button.addEventListener("click", event => {
       clickButton(productInfo);
     });
 
-    article.appendChild(increment);
-    article.appendChild(decrement);
 
     increment.addEventListener("click", event => {
       console.log(productInfo.id);

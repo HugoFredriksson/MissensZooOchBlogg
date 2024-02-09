@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <script src="webbshop.js" defer></script>
+    <script src="UpdatePostAdress.js" defer></script>
     <title>Webbshop</title>
 </head>
-<body id="index">
+<body id="updatePostAdress">
     <div class="wrapper">
         <header>
             <nav>
@@ -23,39 +23,12 @@
         </header>
 
         <main>
-            <div class="grid-container">
-
-                <section class="Sidebar1"></section>
-
-                <section class="Options">
-                    <a id="feed">Foder: </a>
-
-                    <a id="animal">Djur: </a>
-
-                    <a id="miscellaneous">Övrigt: </a>
-
-                    <a id="dog">Hundar: </a>
-
-                    <a id="cat">Katter: </a>
-
-                    <a id="bird">Fåglar: </a>
-
-                    <a id="fish">Fiskar: </a>
-
-                    <a id="transport">Transportmedel: </a>
-
-                    <a id="beautyProduct">Skönhetsprodukter: </a>
-
-                    <a id="bowl">Matskålar: </a>
-                </section>
-
-    
-                    <span class="Products" id="productContainer">
-                    
-                    </span>
-
-                <section class="Sidebar2"></section>
-            </div>
+            <form>
+                <h1>Uppdatera Postadress</h1>
+                <label for="postadress">Postadress:</label><br><br>
+                <input type="text" id="postadress" placeholder="Adress 123 23 Stad Land"><br><br>
+                <button type="submit">Uppdatera postadress</button> 
+            </form>    
         </main>
 
         <footer>

@@ -4,6 +4,7 @@ body {
   margin: 0;
   width: 100%;
   font-family: "Luckiest Guy", cursive;
+  background-image: url(background22.png);
 }
 
 main {
@@ -18,7 +19,6 @@ main {
 
 main {
   grid-area: main;
-  background-image: url(background22.png);
   width: 100%;
   background-color: rgb(235, 235, 235);
 }
@@ -142,6 +142,7 @@ footer {
   animation-name: buttonRainbow;
   animation-duration: 5s;
   animation-iteration-count: infinite;
+  cursor: pointer;
 }
 @keyframes buttonRainbow {
   0% {
@@ -258,12 +259,13 @@ header nav ul {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   padding-top: 100px;
+  height: 100%;
 }
 #cart main .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh;
+  height: 80vh;
   padding-top: 250px;
   border: 2px solid #d1d1d1;
 }
@@ -272,6 +274,11 @@ header nav ul {
 }
 #cart main .cartContainer {
   border: 2px solid #d1d1d1;
+  background-color: #d1d1d1;
+}
+#cart main .cartContainer a {
+  cursor: pointer;
+  padding-left: 10px;
 }
 #cart h2 {
   text-align: center;
@@ -344,6 +351,55 @@ header nav ul {
 
 #ChangePassword form {
   text-align: center;
+}
+
+#profile main, #PostAdresses main {
+  text-align: center;
+}
+#profile main .grid-container, #PostAdresses main .grid-container {
+  background-color: rgb(235, 235, 235);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1019607843);
+  border: 1px solid #ddd;
+  margin: auto;
+  text-align: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+}
+#profile main .grid-container a, #PostAdresses main .grid-container a {
+  padding: 10px;
+  border: 1px solid black;
+}
+#profile main .grid-container h3, #PostAdresses main .grid-container h3 {
+  border: 1px solid black;
+  text-align: left;
+}
+#profile main .order-container, #PostAdresses main .order-container {
+  background-color: rgb(235, 235, 235);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1019607843);
+  border: 1px solid #ddd;
+  margin: auto;
+  text-align: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+}
+#profile main .order-container article, #PostAdresses main .order-container article {
+  border: 2px solid black;
+}
+
+#updatePostAdress main {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  border: 4px solid black;
+  background-color: #ddd;
+}
+
+#PostAdresses main div article p {
+  border: 1px solid black;
 }
 
 #CreateBlog main {

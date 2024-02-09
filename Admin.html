@@ -9,6 +9,8 @@
     <script src="updateUserRole.js" defer></script>
     <script src="changeProduct.js" defer></script>
     <script src="addProduct.js" defer></script>
+    <script src="GetUserId.js" defer></script>
+    <script src="GetUsers.js" defer></script>
     <title>Admin - Missens Zoo</title>
 </head>
 <body id="admin">
@@ -127,6 +129,13 @@
                     <option value="3">Admin</option>
                 </select>
                 <button onclick="updateUserRole()">Update User Role</button>
+            </form>
+
+            <h3>Hämta användare från id</h1>
+            <form>
+                <label for="userId">Användar ID:</label>
+                <input type="text" id="inputGetUserFromId" placeholder="Användar ID"><br>
+                <button type="submit" id="userFromIdButton">Hämta användare</button>
             </form>
         </main>
 

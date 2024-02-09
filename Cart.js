@@ -35,9 +35,9 @@ let formDiv = document.getElementsByTagName("form")[0];
 
 let form;
 let userId;
-
+let role;
 function init(){
-
+    
     recipientNameInput.addEventListener("input", checkRecipientName);
     countryInput.addEventListener("input", checkCountry);
     zipCodeInput.addEventListener("input", checkZip);
@@ -49,11 +49,10 @@ function init(){
     dateInput.addEventListener("input", checkDate);
     cvvInput.addEventListener("input", checkCVV);
 
-    createCartProducts();
 
-
-
+    verify();
     getUserIdFetch();
+    
     form = document.querySelector("form");
 
     form.addEventListener("submit", event => {
@@ -73,22 +72,57 @@ function init(){
 }
 window.onload = init;
 
-
-
 async function productsFetch(){
     cartProducts = await getProductsFetch();
-    console.log(cartProducts);
+    createCartProducts(cartProducts)      
+}
 
+async function removeCartItem(cartInfo){
+    console.log("Tar bort kundvagnsitem " + cartInfo.id);
+
+    let path = "https://localhost:7128/Cart/DeleteProductFromCart/" + cartInfo.id;
+    
+    let response = await fetch(path, {
+        method: "DELETE",
+        mode: "cors",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization": localStorage.getItem("GUID")
+        }
+    });
+    console.log(response);
+    location.reload();
+
+}
+
+function calculateTotalPrice(allPrices){
+    totalPrice = 0;
+    console.log(allPrices);
+    allPrices.forEach(each => {
+        totalPrice+=each;
+    });
+    console.log(totalPrice);
+    return totalPrice;
+}
+
+function createCartProducts(cartProducts){
     cartProducts.forEach(cartInfo =>{
         const article = document.createElement("article");
         productDiv.appendChild(article);
         const p = document.createElement("p");
+        const removeCartItemButton = document.createElement("a");
 
         const totalPricePerProduct = cartInfo.price * cartInfo.quantity;
         allPrices.push(totalPricePerProduct);
 
         p.textContent = cartInfo.name + " " + " x " + cartInfo.quantity + " totalt " + totalPricePerProduct + " SEK";
         article.appendChild(p);
+        removeCartItemButton.textContent = "❌";
+        removeCartItemButton.title = "Ta bort product";
+        removeCartItemButton.addEventListener("click", event =>{
+            removeCartItem(cartInfo);
+        })
+        p.appendChild(removeCartItemButton);
     });
     const article = document.createElement("article");
     priceDiv.appendChild(article);
@@ -102,20 +136,6 @@ async function productsFetch(){
     if(cartProducts.length === 0){
         formDiv.style.visibility = "hidden";
     }
-}
-
-function calculateTotalPrice(allPrices){
-    totalPrice = 0;
-    console.log(allPrices);
-    allPrices.forEach(each => {
-        totalPrice+=each;
-    });
-    console.log(totalPrice);
-    return totalPrice;
-}
-
-function createCartProducts(){
-    productsFetch();
 }
 
 function checkInputFields(){
@@ -199,6 +219,25 @@ async function getProductsFetch(){
     return cartProducts;
 }
 
+async function verify() {
+    let path = "https://localhost:7128/User/VerifyRole";
+    let response = await fetch(path, {
+        headers: {
+            "Authorization": localStorage.getItem("GUID"),
+        },
+    });
+    role = await response.text();
+    console.log(role);
+
+    if(response.status === 403){
+        location.href="LogIn.html";
+    } else{
+        console.log("anropar productsfetch i verify");
+        productsFetch(role);
+    }  
+    return role;
+}
+
 async function getUserIdFetch(){
     let path = "https://localhost:7128/User/VerifyUserId";
     let response = await fetch(path, {
@@ -249,6 +288,7 @@ async function createOrder(){
     });    
     console.log(JSON);
     postOrder(JSON);
+    location.reload();
     //window.location.href="Cart.html";
 }
 

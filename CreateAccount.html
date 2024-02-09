@@ -4,28 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
-    <script src="script.js" defer></script>
-    <title>Skapa Konto - Webbshop</title>
+    <script src="CreateAccount.js" defer></script>
+    <title>Webbshop</title>
 </head>
-<body id="index">
+<body id="CreateAccount">
     <div class="wrapper">
         <header>
-            <header>
-                <nav>
-                    <ul>
-                        <li><img src="logga.png" rel="Bild på Logga" href="index.html">
-                        <li><a class="Shop" href="index.html">Shop</a></li>    
-                        <li><a class="Blog" href="Blog.html">Blogg</a></li>
-                        <li><a class="Profil" href="profile.html">Profil</a></li>
-                        <li><a class="Cart" href="Cart.html">Kundvagn 🛒</a></li>
-                        <li><a class="" href="LogOut.html">Logga Ut</a></li>
-                    </ul>
-                </nav>
-            </header>
-    
+            <nav>
+                <ul>
+                    <li><img src="logga.png" rel="Bild på Logga" href="index.html">
+                    <li><a class="Shop" href="index.html">Shop</a></li>    
+                    <li><a class="Blog" href="Blog.html">Blogg</a></li>
+                </ul>
+            </nav>
+        </header>
+
 
         <main>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores laboriosam impedit nulla expedita, natus, aliquid, rem possimus deserunt maiores inventore veniam. Beatae nihil fugiat dolor sequi ratione! Tempore, veritatis ab.</p>
+            <form id="form_createAccount">
+                <label>Användarnamn: </label><br><br>
+                <input type="text" for="userName" id="userName" placeholder="Användarnamn"><br><br>
+                <label>E-mail</label><br><br>
+                <input type="text" for="eMail" id="eMail" placeholder="Ange E-postadress"><br><br>
+                <label>Lösenord</label><br><br>
+                <input type="password" name="password" id="password" required="" placeholder="Ange Lösenord"><br><br>
+                <label>Upprepa Lösenord</label><br><br>
+                <input type="password" name="repeatpassword" id="repeatpassword" required="" placeholder="Ange Lösenord"><br><br>
+                <button type="button" onclick="createAccount()">Skapa Konto</button>
+            </form>
         </main>
 
         <footer>
@@ -33,4 +39,3 @@
         </footer>
     </div>
 </body>
-</html>
